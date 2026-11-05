@@ -1,6 +1,13 @@
-# Production stack on the OCI Always Free VM.
-#   caddy: HTTPS (free Let's Encrypt certificate) and reverse proxy
-#   app:   the Streamlit app; reaches Autonomous Database over TLS
+# TravelDeal Search on the OCI Always Free VM. Always run it through deploy/compose.sh,
+# which applies COMPOSE_PROFILES from deploy/.env.
+#
+#   app:   the Streamlit app. In personal mode its data is a SQLite file on the
+#          `traveldeal_db` volume; set ORACLE_* in deploy/.env to use Autonomous Database instead.
+#          Published on 127.0.0.1 only, so it's reachable through an SSH tunnel and never
+#          directly from the internet (Docker port rules bypass the host firewall).
+#   caddy: optional HTTPS front door (free Let's Encrypt certificate). Only starts when
+#          deploy/.env has COMPOSE_PROFILES=public. See docs/PERSONAL_SETUP.md, stage 2.
+#
 # Secrets live on the VM only: deploy/.env and .streamlit/secrets.toml (chmod 600).
 services:
   app:
@@ -10,10 +17,13 @@ services:
     env_file: deploy/.env
     environment:
       APP_ENV: production
+      # Used unless ORACLE_* is set in deploy/.env. Four slashes = absolute path.
+      DATABASE_URL: sqlite:////app/var/traveldeal.db
     volumes:
       - ./.streamlit/secrets.toml:/app/.streamlit/secrets.toml:ro
-    expose:
-      - "8501"
+      - traveldeal_db:/app/var
+    ports:
+      - "127.0.0.1:8501:8501"
     mem_limit: 2g
     logging:
       driver: json-file
@@ -21,6 +31,7 @@ services:
 
   caddy:
     image: caddy:2
+    profiles: ["public"]
     restart: unless-stopped
     depends_on: [app]
     ports:
@@ -36,5 +47,6 @@ services:
       options: { max-size: "10m", max-file: "3" }
 
 volumes:
+  traveldeal_db:
   caddy_data:
   caddy_config:

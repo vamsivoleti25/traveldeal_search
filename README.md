@@ -30,9 +30,13 @@ pytest -q                          # engine, database, backup/restore and app sm
 python scripts/validate_data.py    # card data schema and health checks
 ```
 
+## Run it on Oracle Cloud (personal mode)
+
+For trying it out yourself: one Always Free VM, Google sign-in limited to emails you list, SQLite on the VM with nightly backups to Object Storage, reached through an SSH tunnel (or HTTPS on your domain when you want it). **Start with [docs/PERSONAL_SETUP.md](docs/PERSONAL_SETUP.md).**
+
 ## Production
 
-Runs on **Oracle Cloud Always Free** for $0/month:
+The full design also runs on **Oracle Cloud Always Free** for $0/month:
 
 - Compute VM (Ampere A1) running Docker, Caddy (free HTTPS) and the Streamlit app
 - Autonomous Database (Always Free) for user data
@@ -41,6 +45,7 @@ Runs on **Oracle Cloud Always Free** for $0/month:
 
 | Doc | What's in it |
 |---|---|
+| [docs/PERSONAL_SETUP.md](docs/PERSONAL_SETUP.md) | Personal mode: login and data design, and a ~45-minute setup |
 | [docs/SYSTEM_DESIGN.md](docs/SYSTEM_DESIGN.md) | Architecture, data model, security, backups, free-tier limits and risks |
 | [docs/DEPLOY_OCI.md](docs/DEPLOY_OCI.md) | Step-by-step console setup and first deploy |
 | [docs/RUNBOOK.md](docs/RUNBOOK.md) | Logs, rollbacks, restores, rebuilding the VM, rotating secrets |

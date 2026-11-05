@@ -27,6 +27,15 @@ registry = {
 }
 pages.register(registry)
 
+blocked = state.blocked_identity()
+if blocked:
+    # Signed in with Google, but not on ALLOWED_EMAILS. Nothing about them is stored.
+    st.title("This TravelDeal Search is private")
+    st.write(f"**{blocked.get('email') or 'This account'}** isn't on the invite list for this server.")
+    st.caption("Ask the owner to add your email to ALLOWED_EMAILS, or sign out and use another account.")
+    st.button("Sign out", on_click=st.logout, type="primary")
+    st.stop()
+
 user = state.current_user()
 with st.sidebar:
     st.markdown("### ✈️ TravelDeal Search")

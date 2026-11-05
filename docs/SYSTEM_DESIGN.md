@@ -3,6 +3,9 @@
 A Python web product with real accounts and durable data, running entirely on
 **Oracle Cloud Infrastructure (OCI) Always Free** resources for **$0/month**.
 
+> For a single-person test setup (SQLite on the VM, invite-only Google sign-in, SSH tunnel), see
+> [PERSONAL_SETUP.md](PERSONAL_SETUP.md). This document is the design to grow into.
+
 ## 1. Goals and constraints
 
 | Requirement | How it's met |
@@ -37,7 +40,7 @@ flowchart LR
 |---|---|---|---|
 | App server | Compute, `VM.Standard.A1.Flex` | 2 OCPU + 12 GB total (1,500 OCPU-h / 9,000 GB-h per month) | 1 VM, 2 OCPU / 12 GB |
 | Disk | Block Volume (boot) | 200 GB total | 50 GB boot volume |
-| Database | Autonomous Database, Transaction Processing | 2 DBs, 1 OCPU, 20 GB, ~30 sessions each | 1 DB, connection pool of 6 |
+| Database | Autonomous Database, Transaction Processing | 2 DBs, 1 OCPU, 20 GB, 20 simultaneous sessions each | 1 DB, connection pool of 6 |
 | Backups | Object Storage | 20 GB (after trial), 50,000 requests/month | ~30 small files, ~30 requests/month |
 | Network | VCN + public subnet, security list | 2 VCNs | 1 VCN |
 | Egress | Outbound data transfer | 10 TB/month | Well under 1 GB/month at hobby scale |
@@ -147,7 +150,7 @@ Pull-based deploys mean GitHub never needs SSH access to the VM.
 | Trial end: A1 instances over 2 OCPU / 12 GB in total are disabled, then deleted | This design stays at exactly 2 OCPU / 12 GB. |
 | Trial end: Object Storage over 20 GB has its objects deleted | Backups are kilobytes; the lifecycle rule keeps 30 days. |
 | GitHub pauses scheduled workflows after 60 days with no repository activity | Re-enable from the Actions tab, or commit occasionally. |
-| Always Free database is limited to ~30 sessions | The connection pool is capped at 6. |
+| Always Free database is limited to 20 simultaneous sessions | The connection pool is capped at 6. |
 
 **Cost guardrails:** create everything in your home region, pick only shapes labeled *Always Free-eligible*, and set a budget with an alert at $1 so any accidental paid resource emails you within a day.
 

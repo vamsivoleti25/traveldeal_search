@@ -100,8 +100,8 @@ cd /opt/traveldeal
 cp deploy/env.example deploy/.env && chmod 600 deploy/.env && nano deploy/.env
 cp .streamlit/secrets.toml.example .streamlit/secrets.toml && chmod 600 .streamlit/secrets.toml && nano .streamlit/secrets.toml
 python3 -c "import secrets; print(secrets.token_urlsafe(48))"     # paste as cookie_secret
-docker compose up -d --build
-docker compose logs -f
+deploy/compose.sh up -d --build
+deploy/compose.sh logs -f
 ```
 
 Fill in `DOMAIN`, `ORACLE_*` and `BACKUP_*` in `deploy/.env`, and the redirect URI, cookie secret and Google (and optional OCI) client details in `secrets.toml`.

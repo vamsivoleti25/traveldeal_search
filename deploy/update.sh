@@ -30,6 +30,6 @@ fi
 
 echo "Deploying $REMOTE (was $LOCAL)"
 git reset --hard --quiet "$REMOTE"
-docker compose up -d --build --remove-orphans
+deploy/compose.sh up -d --build --remove-orphans
 docker image prune -f >/dev/null
 echo "Deployed $REMOTE"

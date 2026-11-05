@@ -38,5 +38,5 @@ cat <<MSG
 Done. Next:
   1. cp $APP_DIR/deploy/env.example $APP_DIR/deploy/.env && chmod 600 $APP_DIR/deploy/.env   (fill it in)
   2. cp $APP_DIR/.streamlit/secrets.toml.example $APP_DIR/.streamlit/secrets.toml && chmod 600 $APP_DIR/.streamlit/secrets.toml
-  3. Log out and back in (for the docker group), then:  cd $APP_DIR && docker compose up -d --build
+  3. Log out and back in (for the docker group), then:  cd $APP_DIR && deploy/compose.sh up -d --build
 MSG

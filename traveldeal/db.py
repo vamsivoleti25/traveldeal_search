@@ -105,7 +105,7 @@ def make_engine(settings: Settings | None = None, url: str | None = None) -> Eng
     settings = settings or get_settings()
     if url is None and settings.uses_oracle:
         # Walletless TLS to Autonomous Database. Connections are short-lived and pooled;
-        # the Always Free tier allows ~30 sessions, so keep the pool small.
+        # the Always Free tier allows 20 simultaneous sessions, so keep the pool small.
         return create_engine(
             "oracle+oracledb://",
             connect_args={"user": settings.oracle_user, "password": settings.oracle_password, "dsn": settings.oracle_dsn},
@@ -119,8 +119,14 @@ def make_engine(settings: Settings | None = None, url: str | None = None) -> Eng
     engine = create_engine(url or settings.database_url or "sqlite:///local.db", pool_pre_ping=True)
     if engine.dialect.name == "sqlite":
         @event.listens_for(engine, "connect")
-        def _fk_on(dbapi_conn, _):  # SQLite ignores foreign keys unless asked
-            dbapi_conn.execute("PRAGMA foreign_keys=ON")
+        def _sqlite_pragmas(dbapi_conn, _):
+            dbapi_conn.execute("PRAGMA foreign_keys=ON")  # SQLite ignores foreign keys unless asked
+            if engine.url.database not in (None, "", ":memory:"):
+                # WAL lets the nightly backup read while the app writes; busy_timeout waits
+                # briefly on a lock instead of failing with "database is locked".
+                dbapi_conn.execute("PRAGMA journal_mode=WAL")
+                dbapi_conn.execute("PRAGMA busy_timeout=5000")
+                dbapi_conn.execute("PRAGMA synchronous=NORMAL")
     return engine
 
 

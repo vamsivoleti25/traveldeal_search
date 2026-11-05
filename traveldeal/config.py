@@ -1,7 +1,10 @@
 """Runtime configuration, read from environment variables.
 
 Local development needs nothing: the app uses SQLite at ./local.db.
-Production (the OCI VM) sets ORACLE_* variables to use the Always Free Autonomous Database.
+Personal mode (the OCI VM, see docs/PERSONAL_SETUP.md) sets DATABASE_URL to a SQLite file
+on a Docker volume. Setting ORACLE_* instead switches to the Always Free Autonomous Database.
+
+ALLOWED_EMAILS (comma-separated) limits who can sign in. Leave it empty to let anyone in.
 """
 
 from __future__ import annotations
@@ -21,10 +24,17 @@ class Settings:
     backup_bucket: str | None
     backup_prefix: str
     admin_emails: tuple[str, ...]
+    allowed_emails: tuple[str, ...] = ()
 
     @property
     def is_production(self) -> bool:
         return self.app_env == "production"
+
+    def email_allowed(self, email: str | None) -> bool:
+        """True when sign-in is open to everyone, or this email is on the allow-list."""
+        if not self.allowed_emails:
+            return True
+        return bool(email) and email.strip().lower() in self.allowed_emails
 
     @property
     def uses_oracle(self) -> bool:
@@ -42,5 +52,10 @@ def get_settings() -> Settings:
         dev_user_email=env("AUTH_DEV_USER"),
         backup_bucket=env("BACKUP_BUCKET"),
         backup_prefix=env("BACKUP_PREFIX", "traveldeal"),
-        admin_emails=tuple(e.strip().lower() for e in env("ADMIN_EMAILS", "").split(",") if e.strip()),
+        admin_emails=_email_list(env("ADMIN_EMAILS", "")),
+        allowed_emails=_email_list(env("ALLOWED_EMAILS", "")),
     )
+
+
+def _email_list(raw: str) -> tuple[str, ...]:
+    return tuple(e.strip().lower() for e in raw.split(",") if e.strip())

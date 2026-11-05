@@ -97,3 +97,27 @@ def test_restore_refuses_non_empty_database(repo):
     r.upsert_user("google:1", None, None)
     with pytest.raises(RuntimeError):
         restore(engine, snapshot(engine))
+
+
+def test_file_sqlite_uses_wal_and_busy_timeout(tmp_path):
+    from sqlalchemy import text
+
+    from traveldeal.db import make_engine
+
+    engine = make_engine(url=f"sqlite:///{tmp_path / 'td.db'}")
+    with engine.connect() as conn:
+        assert conn.execute(text("PRAGMA journal_mode")).scalar() == "wal"
+        assert conn.execute(text("PRAGMA busy_timeout")).scalar() == 5000
+        assert conn.execute(text("PRAGMA foreign_keys")).scalar() == 1
+
+
+def test_email_allow_list():
+    from traveldeal.config import Settings
+
+    base = dict(app_env="production", database_url=None, oracle_user=None, oracle_password=None, oracle_dsn=None,
+                dev_user_email=None, backup_bucket=None, backup_prefix="x", admin_emails=())
+    assert Settings(**base).email_allowed("anyone@example.com")  # empty list = open sign-up
+    s = Settings(**base, allowed_emails=("me@example.com",))
+    assert s.email_allowed(" ME@example.com ")
+    assert not s.email_allowed("someone@example.com")
+    assert not s.email_allowed(None)

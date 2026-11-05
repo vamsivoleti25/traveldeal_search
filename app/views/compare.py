@@ -30,6 +30,22 @@ GIFT_CATEGORIES = {
 }
 
 
+WALLET_WIDGET = "_w_wallet"
+CREDITS_WIDGET = "_w_apply_credits"
+VALUATION_WIDGET = "_w_valuation_mode"
+
+
+def _on_wallet_change() -> None:
+    state.set_wallet(SS[WALLET_WIDGET])
+
+
+def _on_settings_change() -> None:
+    s = state.settings()
+    s.apply_credits = bool(SS[CREDITS_WIDGET])
+    s.valuation_mode = SS[VALUATION_WIDGET] or s.valuation_mode  # clicking the selected segment deselects it
+    state.save_settings(s)
+
+
 def _breakdown(option: Option) -> None:
     rows = [{"Item": li.label, "Amount": usd(li.amount)} for li in option.breakdown]
     rows.append({"Item": "Effective cost", "Amount": usd(option.effective_cost)})
@@ -51,15 +67,18 @@ def render() -> None:
     with st.container(border=True):
         options = [c.id for c in cat.cards]
         names = {c.id: f"{c.name} · {ISSUER_LABELS[c.issuer]}" for c in cat.cards}
-        chosen = st.multiselect(
+        # A stable key plus an on_change callback. Passing the wallet as `default` with no key
+        # gave the widget a new identity every time the wallet changed, so the *next* pick was
+        # silently dropped (pick a card, page refreshes, nothing happens, pick it again).
+        SS[WALLET_WIDGET] = [c for c in state.wallet() if c in names]
+        st.multiselect(
             "Your cards",
             options,
-            default=[c for c in state.wallet() if c in names],
+            key=WALLET_WIDGET,
+            on_change=_on_wallet_change,
             format_func=names.get,
             placeholder="Search cards, e.g. Sapphire, Amex Gold, Venture X",
         )
-        if chosen != state.wallet():
-            state.set_wallet(chosen)
         if not user:
             st.caption("Sign in (top right) to keep your cards, settings and saved trips across devices.")
 
@@ -122,13 +141,12 @@ def render() -> None:
     settings = state.settings()
     with st.container(border=True):
         t1, t2 = st.columns([3, 2])
-        apply = t1.toggle("Apply my unused card credits to this booking", value=settings.apply_credits)
-        mode = t2.segmented_control("Value points at", ["cash", "transfer"], default=settings.valuation_mode,
-                                    format_func={"cash": "Cash value", "transfer": "Transfer partners"}.get)
-        if apply != settings.apply_credits or (mode and mode != settings.valuation_mode):
-            settings.apply_credits = apply
-            settings.valuation_mode = mode or settings.valuation_mode
-            state.save_settings(settings)
+        # Same fix as the card picker: stable keys, values seeded from settings, saved in callbacks.
+        SS[CREDITS_WIDGET] = settings.apply_credits
+        SS[VALUATION_WIDGET] = settings.valuation_mode
+        t1.toggle("Apply my unused card credits to this booking", key=CREDITS_WIDGET, on_change=_on_settings_change)
+        t2.segmented_control("Value points at", ["cash", "transfer"], key=VALUATION_WIDGET, on_change=_on_settings_change,
+                             format_func={"cash": "Cash value", "transfer": "Transfer partners"}.get)
 
         merchant_name = cat.program(SS.f_merchant).name if cat.program(SS.f_merchant) else ""
         booking = build_booking(portals, merchant_name)

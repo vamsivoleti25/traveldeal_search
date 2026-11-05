@@ -13,7 +13,9 @@ COPY data ./data
 COPY schema ./schema
 COPY .streamlit/config.toml ./.streamlit/config.toml
 
-RUN useradd --create-home --uid 10001 appuser && chown -R appuser /app
+# /app/var holds the SQLite database (a Docker volume in docker-compose.yml). Creating it here
+# owned by appuser means a fresh volume starts with the right permissions.
+RUN useradd --create-home --uid 10001 appuser && mkdir -p /app/var && chown -R appuser /app
 USER appuser
 
 EXPOSE 8501

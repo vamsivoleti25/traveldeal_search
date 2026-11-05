@@ -5,6 +5,8 @@
 - v0.2: 97-card catalog, gift card deals, data-health workflows
 - v0.3: Python rewrite on Streamlit; sign-in (Google, optional OCI Identity Domain); saved wallet, settings and trips in Autonomous Database; nightly backups; pull-based deploys on OCI Always Free
 
+- v0.3.1: fixed card picker and settings toggles dropping every other click; personal mode (SQLite on the VM, `ALLOWED_EMAILS` invite list, SSH-tunnel access, optional public HTTPS profile)
+
 ## Next
 - [ ] Verify the 4 cards marked `needsVerification`
 - [ ] Ask CardBear about permission or an API before enabling the weekly gift card refresh

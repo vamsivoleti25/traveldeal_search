@@ -57,6 +57,7 @@ def _identity() -> dict[str, str] | None:
         return {
             "subject": f"{issuer}|{st.user.get('sub')}",
             "email": st.user.get("email"),
+            "email_verified": st.user.get("email_verified", True) is not False,
             "name": st.user.get("name") or st.user.get("given_name") or st.user.get("email"),
         }
     settings = get_settings()
@@ -65,9 +66,24 @@ def _identity() -> dict[str, str] | None:
     return None
 
 
+def _allowed(ident: dict[str, Any]) -> bool:
+    settings = get_settings()
+    if not settings.allowed_emails:
+        return True
+    return ident.get("email_verified", True) and settings.email_allowed(ident.get("email"))
+
+
+def blocked_identity() -> dict[str, Any] | None:
+    """Someone who signed in with the provider but isn't on ALLOWED_EMAILS. Never stored."""
+    ident = _identity()
+    return ident if ident is not None and not _allowed(ident) else None
+
+
 def current_user() -> dict[str, Any] | None:
     """Signed-in user with their database id. Loads wallet and settings once per session."""
     ident = _identity()
+    if ident is not None and not _allowed(ident):
+        ident = None  # not invited: treat as signed out and write nothing to the database
     if ident is None:
         if SS.get("td_user"):
             # Signed out since the last run: drop personal data from the session.
