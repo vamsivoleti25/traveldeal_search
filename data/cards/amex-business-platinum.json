@@ -1,0 +1,47 @@
+{
+  "id": "amex-business-platinum",
+  "name": "The Business Platinum Card from American Express",
+  "issuer": "amex",
+  "network": "amex",
+  "type": "business",
+  "annualFee": 895,
+  "currency": "amex_mr",
+  "baseRate": 1,
+  "portal": "amex_travel",
+  "earn": [
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": "portal",
+      "rate": 5,
+      "note": "Flights on AmexTravel.com"
+    },
+    {
+      "categories": [
+        "hotel"
+      ],
+      "channel": "portal",
+      "rate": 5,
+      "prepaidOnly": true,
+      "note": "Prepaid hotels on AmexTravel.com"
+    },
+    {
+      "categories": [
+        "shipping"
+      ],
+      "channel": "any",
+      "rate": 2,
+      "note": "Plus construction, electronics, software suppliers; select merchants from Feb 17, 2027"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/amex-membership-rewards-points/"
+  ],
+  "notes": [
+    "35% points rebate on airfare booked with points through Amex Travel; 2x on purchases of $5,000+ not modeled."
+  ]
+}

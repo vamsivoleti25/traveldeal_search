@@ -1,0 +1,38 @@
+{
+  "id": "citi-aadvantage-globe",
+  "name": "Citi / AAdvantage Globe",
+  "issuer": "citi",
+  "network": "mastercard",
+  "type": "personal",
+  "annualFee": 350,
+  "currency": "aa_miles",
+  "baseRate": 1,
+  "earn": [
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": "direct",
+      "rate": 3,
+      "merchant": "american"
+    },
+    {
+      "categories": [
+        "dining",
+        "transit",
+        "rideshare"
+      ],
+      "channel": "any",
+      "rate": 2
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/american-airlines-aadvantage-miles/"
+  ],
+  "notes": [
+    "6x on AAdvantage Hotels bookings not modeled."
+  ]
+}

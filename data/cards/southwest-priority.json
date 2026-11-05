@@ -1,0 +1,34 @@
+{
+  "id": "southwest-priority",
+  "name": "Southwest Rapid Rewards Priority",
+  "issuer": "chase",
+  "network": "visa",
+  "type": "personal",
+  "annualFee": 229,
+  "currency": "southwest_points",
+  "baseRate": 1,
+  "earn": [
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": "direct",
+      "rate": 4,
+      "merchant": "southwest"
+    },
+    {
+      "categories": [
+        "gas",
+        "dining"
+      ],
+      "channel": "any",
+      "rate": 2
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/southwest-rapid-rewards-points/"
+  ]
+}

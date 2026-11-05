@@ -1,0 +1,35 @@
+{
+  "id": "hilton-honors-business",
+  "name": "Hilton Honors American Express Business Card",
+  "issuer": "amex",
+  "network": "amex",
+  "type": "business",
+  "annualFee": 195,
+  "currency": "hilton_points",
+  "baseRate": 3,
+  "earn": [
+    {
+      "categories": [
+        "hotel"
+      ],
+      "channel": "direct",
+      "rate": 12,
+      "merchant": "hilton"
+    },
+    {
+      "categories": [
+        "everything"
+      ],
+      "channel": "any",
+      "rate": 5,
+      "cap": 100000,
+      "capPeriod": "calendar_year"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/hilton-honors-points/"
+  ]
+}

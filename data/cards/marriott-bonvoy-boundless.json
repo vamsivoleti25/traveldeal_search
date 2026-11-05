@@ -1,0 +1,43 @@
+{
+  "id": "marriott-bonvoy-boundless",
+  "name": "Marriott Bonvoy Boundless",
+  "issuer": "chase",
+  "network": "visa",
+  "type": "personal",
+  "annualFee": 95,
+  "currency": "marriott_bonvoy",
+  "baseRate": 2,
+  "earn": [
+    {
+      "categories": [
+        "hotel"
+      ],
+      "channel": "direct",
+      "rate": 6,
+      "merchant": "marriott",
+      "note": "Marriott Bonvoy hotels (card points only; member points counted separately)"
+    },
+    {
+      "categories": [
+        "dining",
+        "grocery",
+        "gas"
+      ],
+      "channel": "any",
+      "rate": 3,
+      "cap": 6000,
+      "capPeriod": "calendar_year",
+      "note": "Combined cap across these categories"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/marriott-bonvoy-points/",
+    "https://creditcards.chase.com/travel-credit-cards/marriott-bonvoy/boundless"
+  ],
+  "notes": [
+    "Annual 35k free night certificate is not booking-dependent and is not modeled."
+  ]
+}

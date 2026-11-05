@@ -1,0 +1,79 @@
+{
+  "id": "bilt-obsidian",
+  "name": "Bilt Obsidian Card",
+  "issuer": "bilt",
+  "network": "mastercard",
+  "type": "personal",
+  "annualFee": 95,
+  "currency": "bilt_points",
+  "baseRate": 1,
+  "portal": "bilt_travel",
+  "earn": [
+    {
+      "categories": [
+        "hotel"
+      ],
+      "channel": "portal",
+      "rate": 4,
+      "note": "Bilt Travel"
+    },
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": "portal",
+      "rate": 3,
+      "note": "Bilt Travel"
+    },
+    {
+      "categories": [
+        "dining"
+      ],
+      "channel": "any",
+      "rate": 3,
+      "condition": "You chose dining as your 3x category"
+    },
+    {
+      "categories": [
+        "grocery"
+      ],
+      "channel": "any",
+      "rate": 3,
+      "cap": 25000,
+      "capPeriod": "calendar_year",
+      "condition": "You chose grocery as your 3x category"
+    },
+    {
+      "categories": [
+        "travel"
+      ],
+      "channel": [
+        "direct",
+        "ota"
+      ],
+      "rate": 2,
+      "note": "Other travel"
+    }
+  ],
+  "credits": [
+    {
+      "id": "hotel-credit",
+      "name": "$100 Bilt Travel hotel credit",
+      "amount": 100,
+      "period": "calendar_year",
+      "categories": [
+        "hotel"
+      ],
+      "channel": "portal",
+      "creditedAmountEarnsPoints": true
+    }
+  ],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/bilt-rewards-points/"
+  ],
+  "notes": [
+    "Rent and mortgage earn up to 1.25x depending on everyday spend; not modeled."
+  ]
+}

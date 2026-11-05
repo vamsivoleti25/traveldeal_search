@@ -1,0 +1,48 @@
+{
+  "id": "ihg-premier",
+  "name": "IHG One Rewards Premier",
+  "issuer": "chase",
+  "network": "mastercard",
+  "type": "personal",
+  "annualFee": 150,
+  "currency": "ihg_points",
+  "baseRate": 3,
+  "earn": [
+    {
+      "categories": [
+        "hotel"
+      ],
+      "channel": "direct",
+      "rate": 10,
+      "merchant": "ihg",
+      "note": "IHG Hotels & Resorts"
+    },
+    {
+      "categories": [
+        "flight",
+        "car_rental",
+        "dining",
+        "grocery",
+        "gas"
+      ],
+      "channel": "any",
+      "rate": 5
+    },
+    {
+      "categories": [
+        "travel"
+      ],
+      "channel": "any",
+      "rate": 5,
+      "validUntil": "2026-12-31",
+      "note": "5x on all travel through 12/31/26"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/ihg-one-rewards-points/",
+    "https://frequentmiler.com/best-credit-card-category-bonuses"
+  ]
+}

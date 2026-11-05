@@ -1,0 +1,30 @@
+{
+  "id": "citi-aadvantage-executive",
+  "name": "Citi / AAdvantage Executive",
+  "issuer": "citi",
+  "network": "mastercard",
+  "type": "personal",
+  "annualFee": 695,
+  "currency": "aa_miles",
+  "baseRate": 1,
+  "earn": [
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": "direct",
+      "rate": 4,
+      "merchant": "american",
+      "note": "5x after $150k annual spend"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/american-airlines-aadvantage-miles/"
+  ],
+  "notes": [
+    "12x on AAdvantage Hotels and Cars bookings not modeled. Includes Admirals Club membership."
+  ]
+}

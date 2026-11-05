@@ -1,0 +1,36 @@
+{
+  "id": "us-bank-altitude-go",
+  "name": "U.S. Bank Altitude Go",
+  "issuer": "us_bank",
+  "network": "visa",
+  "type": "personal",
+  "annualFee": 0,
+  "currency": "us_bank_points",
+  "baseRate": 1,
+  "earn": [
+    {
+      "categories": [
+        "dining"
+      ],
+      "channel": "any",
+      "rate": 4,
+      "cap": 2000,
+      "capPeriod": "quarter"
+    },
+    {
+      "categories": [
+        "grocery",
+        "gas",
+        "streaming"
+      ],
+      "channel": "any",
+      "rate": 2
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/us-bank-altitude-rewards-points/"
+  ]
+}

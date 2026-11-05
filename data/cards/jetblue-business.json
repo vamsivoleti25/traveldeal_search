@@ -1,0 +1,34 @@
+{
+  "id": "jetblue-business",
+  "name": "JetBlue Business Card",
+  "issuer": "barclays",
+  "network": "mastercard",
+  "type": "business",
+  "annualFee": 99,
+  "currency": "jetblue_points",
+  "baseRate": 1,
+  "earn": [
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": "direct",
+      "rate": 6,
+      "merchant": "jetblue"
+    },
+    {
+      "categories": [
+        "dining",
+        "office_supply"
+      ],
+      "channel": "any",
+      "rate": 2
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/jetblue-trueblue-points/"
+  ]
+}

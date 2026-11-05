@@ -1,0 +1,33 @@
+{
+  "name": "traveldeal_search",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Compare booking a flight or hotel direct vs. through card travel portals vs. discounted gift cards, using the credit cards you hold.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "validate": "tsx scripts/validate-data.ts",
+    "check": "npm run validate && npm run test && npm run build",
+    "refresh:giftcards": "tsx scripts/refresh-giftcards.ts",
+    "report": "tsx scripts/validate-data.ts --report card-data-report.md"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "ajv": "^8.17.1",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2",
+    "vitest": "^2.0.5"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "capital-one-spark-cash-plus",
+  "name": "Capital One Spark Cash Plus",
+  "issuer": "capital_one",
+  "network": "mastercard",
+  "type": "business",
+  "annualFee": 150,
+  "currency": "cash_back",
+  "baseRate": 2,
+  "portal": "capital_one_travel",
+  "earn": [
+    {
+      "categories": [
+        "hotel",
+        "car_rental"
+      ],
+      "channel": "portal",
+      "rate": 5,
+      "note": "Select travel through Capital One Business Travel"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": true,
+  "sources": [
+    "https://www.thepointcalculator.com/us/rewards/cash-back-rewards/"
+  ],
+  "notes": [
+    "Annual fee and exact 5% travel categories not confirmed by source."
+  ]
+}

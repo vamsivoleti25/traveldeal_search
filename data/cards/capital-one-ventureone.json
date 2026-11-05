@@ -1,0 +1,28 @@
+{
+  "id": "capital-one-ventureone",
+  "name": "Capital One VentureOne",
+  "issuer": "capital_one",
+  "network": "visa",
+  "type": "personal",
+  "annualFee": 0,
+  "currency": "capital_one_miles",
+  "baseRate": 1.25,
+  "portal": "capital_one_travel",
+  "earn": [
+    {
+      "categories": [
+        "hotel",
+        "car_rental"
+      ],
+      "channel": "portal",
+      "rate": 5,
+      "note": "Capital One Travel"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/capital-one-miles/"
+  ]
+}

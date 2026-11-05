@@ -1,0 +1,46 @@
+{
+  "id": "bilt-blue",
+  "name": "Bilt Blue Card",
+  "issuer": "bilt",
+  "network": "mastercard",
+  "type": "personal",
+  "annualFee": 0,
+  "currency": "bilt_points",
+  "baseRate": 1,
+  "portal": "bilt_travel",
+  "earn": [
+    {
+      "categories": [
+        "hotel"
+      ],
+      "channel": "portal",
+      "rate": 3,
+      "note": "Bilt Travel"
+    },
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": "portal",
+      "rate": 2,
+      "note": "Bilt Travel"
+    },
+    {
+      "categories": [
+        "rideshare"
+      ],
+      "channel": "any",
+      "rate": 3,
+      "condition": "Lyft account linked to Bilt"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/bilt-rewards-points/"
+  ],
+  "notes": [
+    "Rent and mortgage earn up to 1.25x depending on everyday spend; not modeled."
+  ]
+}

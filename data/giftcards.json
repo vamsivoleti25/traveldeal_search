@@ -1,0 +1,416 @@
+{
+  "asOf": "2026-11-05",
+  "source": {
+    "name": "CardBear",
+    "url": "https://www.cardbear.com/gift-cards/travel",
+    "note": "Snapshot of the best listed resale discount per brand. Rates change daily and stock sells out; always check the live page before buying."
+  },
+  "brands": [
+    {
+      "id": "gap",
+      "name": "Gap",
+      "category": "retail",
+      "travel": false,
+      "discountPct": 15.9,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/124/gap"
+    },
+    {
+      "id": "doordash",
+      "name": "DoorDash",
+      "category": "dining",
+      "travel": false,
+      "discountPct": 15,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/632/doordash"
+    },
+    {
+      "id": "walgreens",
+      "name": "Walgreens",
+      "category": "retail",
+      "travel": false,
+      "discountPct": 15,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/76/walgreens"
+    },
+    {
+      "id": "uber",
+      "name": "Uber",
+      "category": "rideshare",
+      "travel": true,
+      "discountPct": 14.5,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/551/uber"
+    },
+    {
+      "id": "amtrak",
+      "name": "Amtrak",
+      "category": "rail",
+      "travel": true,
+      "discountPct": 14.5,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/726/amtrak"
+    },
+    {
+      "id": "barnes-noble",
+      "name": "Barnes & Noble",
+      "category": "retail",
+      "travel": false,
+      "discountPct": 12,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/69/barnes-noble"
+    },
+    {
+      "id": "lowe-s",
+      "name": "Lowe's",
+      "category": "home",
+      "travel": false,
+      "discountPct": 12,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/19/lowes"
+    },
+    {
+      "id": "tripgift",
+      "name": "TripGift",
+      "category": "travel_booking",
+      "travel": true,
+      "discountPct": 11.9,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/820/tripgift"
+    },
+    {
+      "id": "petsmart",
+      "name": "PetSmart",
+      "category": "retail",
+      "travel": false,
+      "discountPct": 11.5,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/109/petsmart"
+    },
+    {
+      "id": "hotels-com",
+      "name": "Hotels.com",
+      "category": "hotel",
+      "travel": true,
+      "discountPct": 10.4,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/470/hotelscom"
+    },
+    {
+      "id": "circle-k",
+      "name": "Circle K",
+      "category": "gas",
+      "travel": false,
+      "discountPct": 10.1,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/710/circle-k"
+    },
+    {
+      "id": "southwest-airlines",
+      "name": "Southwest Airlines",
+      "category": "airline",
+      "travel": true,
+      "discountPct": 10,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/119/southwest-airlines",
+      "merchant": "southwest"
+    },
+    {
+      "id": "seaworld",
+      "name": "SeaWorld",
+      "category": "attraction",
+      "travel": true,
+      "discountPct": 10,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/821/seaworld"
+    },
+    {
+      "id": "best-buy",
+      "name": "Best Buy",
+      "category": "electronics",
+      "travel": false,
+      "discountPct": 10,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/12/best-buy"
+    },
+    {
+      "id": "apple-store",
+      "name": "Apple Store",
+      "category": "electronics",
+      "travel": false,
+      "discountPct": 10,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/5/apple-store"
+    },
+    {
+      "id": "starbucks",
+      "name": "Starbucks",
+      "category": "dining",
+      "travel": false,
+      "discountPct": 10,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/127/starbucks"
+    },
+    {
+      "id": "carnival-cruise-line",
+      "name": "Carnival Cruise Line",
+      "category": "cruise",
+      "travel": true,
+      "discountPct": 9.5,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/656/carnival-cruise-line"
+    },
+    {
+      "id": "marriott",
+      "name": "Marriott",
+      "category": "hotel",
+      "travel": true,
+      "discountPct": 9,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/314/marriott",
+      "merchant": "marriott",
+      "avg12mPct": 8.2,
+      "high12mPct": 12,
+      "sellers": [
+        {
+          "name": "Cardcenter",
+          "discountPct": 9
+        },
+        {
+          "name": "Carddepot",
+          "discountPct": 8
+        },
+        {
+          "name": "CardCash",
+          "discountPct": 5.8
+        },
+        {
+          "name": "Giftcardoutlets",
+          "discountPct": 5.1
+        },
+        {
+          "name": "Raise",
+          "discountPct": 5
+        }
+      ]
+    },
+    {
+      "id": "royal-caribbean",
+      "name": "Royal Caribbean",
+      "category": "cruise",
+      "travel": true,
+      "discountPct": 9,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/565/royal-caribbean"
+    },
+    {
+      "id": "virgin-experience",
+      "name": "Virgin Experience",
+      "category": "attraction",
+      "travel": true,
+      "discountPct": 9,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/844/virgin-experience"
+    },
+    {
+      "id": "target",
+      "name": "Target",
+      "category": "retail",
+      "travel": false,
+      "discountPct": 9,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/31/target"
+    },
+    {
+      "id": "nordstrom",
+      "name": "Nordstrom",
+      "category": "retail",
+      "travel": false,
+      "discountPct": 8.2,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/25/nordstrom"
+    },
+    {
+      "id": "outdoorsy",
+      "name": "Outdoorsy",
+      "category": "vacation_rental",
+      "travel": true,
+      "discountPct": 7.5,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/962/outdoorsy"
+    },
+    {
+      "id": "delta-air-lines",
+      "name": "Delta Air Lines",
+      "category": "airline",
+      "travel": true,
+      "discountPct": 7,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/331/delta-airlines",
+      "merchant": "delta"
+    },
+    {
+      "id": "princess-cruises",
+      "name": "Princess Cruises",
+      "category": "cruise",
+      "travel": true,
+      "discountPct": 6.5,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/630/princess-cruises"
+    },
+    {
+      "id": "airlinegift",
+      "name": "AirlineGift",
+      "category": "airline",
+      "travel": true,
+      "discountPct": 6,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/989/airlinegift"
+    },
+    {
+      "id": "sephora",
+      "name": "Sephora",
+      "category": "retail",
+      "travel": false,
+      "discountPct": 6,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/72/sephora"
+    },
+    {
+      "id": "kohl-s",
+      "name": "Kohl's",
+      "category": "retail",
+      "travel": false,
+      "discountPct": 6,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/128/kohls"
+    },
+    {
+      "id": "ritz-carlton",
+      "name": "Ritz-Carlton",
+      "category": "hotel",
+      "travel": true,
+      "discountPct": 5.8,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/396/ritz-carlton"
+    },
+    {
+      "id": "holland-america",
+      "name": "Holland America",
+      "category": "cruise",
+      "travel": true,
+      "discountPct": 5.5,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/869/holland-america"
+    },
+    {
+      "id": "chevron",
+      "name": "Chevron",
+      "category": "gas",
+      "travel": false,
+      "discountPct": 5.5,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/468/chevron"
+    },
+    {
+      "id": "valero",
+      "name": "Valero",
+      "category": "gas",
+      "travel": false,
+      "discountPct": 5.5,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/695/valero"
+    },
+    {
+      "id": "airbnb",
+      "name": "Airbnb",
+      "category": "vacation_rental",
+      "travel": true,
+      "discountPct": 5,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/577/airbnb"
+    },
+    {
+      "id": "american-airlines",
+      "name": "American Airlines",
+      "category": "airline",
+      "travel": true,
+      "discountPct": 5,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/153/american-airlines",
+      "merchant": "american"
+    },
+    {
+      "id": "best-western",
+      "name": "Best Western",
+      "category": "hotel",
+      "travel": true,
+      "discountPct": 5,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/82/best-western"
+    },
+    {
+      "id": "hyatt",
+      "name": "Hyatt",
+      "category": "hotel",
+      "travel": true,
+      "discountPct": 5,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/280/hyatt",
+      "merchant": "hyatt"
+    },
+    {
+      "id": "lyft",
+      "name": "Lyft",
+      "category": "rideshare",
+      "travel": true,
+      "discountPct": 5,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/519/lyft"
+    },
+    {
+      "id": "sheraton",
+      "name": "Sheraton",
+      "category": "hotel",
+      "travel": true,
+      "discountPct": 5,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/967/sheraton"
+    },
+    {
+      "id": "global-hotel-card",
+      "name": "Global Hotel Card",
+      "category": "hotel",
+      "travel": true,
+      "discountPct": 4.5,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/359/global-hotel-card"
+    },
+    {
+      "id": "hilton",
+      "name": "Hilton",
+      "category": "hotel",
+      "travel": true,
+      "discountPct": 4.4,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/612/hilton",
+      "merchant": "hilton"
+    },
+    {
+      "id": "fairmont-hotels-and-resorts",
+      "name": "Fairmont Hotels and Resorts",
+      "category": "hotel",
+      "travel": true,
+      "discountPct": 4,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/775/fairmont-hotels-and-resorts"
+    },
+    {
+      "id": "home-depot",
+      "name": "Home Depot",
+      "category": "home",
+      "travel": false,
+      "discountPct": 3.6,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/2/home-depot"
+    },
+    {
+      "id": "disney",
+      "name": "Disney",
+      "category": "attraction",
+      "travel": true,
+      "discountPct": 3,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/561/disney"
+    },
+    {
+      "id": "ebay",
+      "name": "eBay",
+      "category": "retail",
+      "travel": false,
+      "discountPct": 2.5,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/344/ebay"
+    },
+    {
+      "id": "amazon",
+      "name": "Amazon",
+      "category": "retail",
+      "travel": false,
+      "discountPct": 1.2,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/111/amazon"
+    },
+    {
+      "id": "disney-cruise-line",
+      "name": "Disney Cruise Line",
+      "category": "cruise",
+      "travel": true,
+      "discountPct": 1,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/913/disney-cruise-line"
+    },
+    {
+      "id": "walmart",
+      "name": "Walmart",
+      "category": "retail",
+      "travel": false,
+      "discountPct": 1,
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/4/walmart"
+    }
+  ]
+}

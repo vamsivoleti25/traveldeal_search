@@ -1,0 +1,54 @@
+{
+  "id": "capital-one-venture-x",
+  "name": "Capital One Venture X",
+  "issuer": "capital_one",
+  "network": "visa",
+  "type": "personal",
+  "annualFee": 395,
+  "currency": "capital_one_miles",
+  "baseRate": 2,
+  "portal": "capital_one_travel",
+  "earn": [
+    {
+      "categories": [
+        "hotel",
+        "car_rental"
+      ],
+      "channel": "portal",
+      "rate": 10,
+      "note": "Hotels and rental cars through Capital One Travel"
+    },
+    {
+      "categories": [
+        "flight",
+        "vacation_rental"
+      ],
+      "channel": "portal",
+      "rate": 5,
+      "note": "Flights and vacation rentals through Capital One Travel"
+    }
+  ],
+  "credits": [
+    {
+      "id": "travel-credit",
+      "name": "$300 Capital One Travel credit",
+      "amount": 300,
+      "period": "anniversary_year",
+      "categories": [
+        "travel"
+      ],
+      "channel": "portal",
+      "creditedAmountEarnsPoints": false,
+      "note": "Only for bookings made through Capital One Travel. Whether the credited amount earns miles is not confirmed; modeled conservatively as no."
+    }
+  ],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.capitalone.com/credit-cards/venture-x/",
+    "https://www.thepointcalculator.com/us/capital-one-miles/"
+  ],
+  "notes": [
+    "10,000 anniversary miles are not booking-dependent and are not modeled."
+  ]
+}

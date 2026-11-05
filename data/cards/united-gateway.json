@@ -1,0 +1,35 @@
+{
+  "id": "united-gateway",
+  "name": "United Gateway Card",
+  "issuer": "chase",
+  "network": "visa",
+  "type": "personal",
+  "annualFee": 0,
+  "currency": "united_miles",
+  "baseRate": 1,
+  "earn": [
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": "direct",
+      "rate": 2,
+      "merchant": "united"
+    },
+    {
+      "categories": [
+        "gas",
+        "transit",
+        "rideshare"
+      ],
+      "channel": "any",
+      "rate": 2
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/united-mileageplus-miles/"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "capital-one-venture-business",
+  "name": "Capital One Venture Business",
+  "issuer": "capital_one",
+  "network": "visa",
+  "type": "business",
+  "annualFee": 95,
+  "currency": "capital_one_miles",
+  "baseRate": 2,
+  "portal": "capital_one_travel",
+  "earn": [
+    {
+      "categories": [
+        "hotel",
+        "car_rental",
+        "vacation_rental"
+      ],
+      "channel": "portal",
+      "rate": 5,
+      "note": "Capital One Business Travel"
+    }
+  ],
+  "credits": [
+    {
+      "id": "travel-credit",
+      "name": "$50 Capital One Business Travel credit",
+      "amount": 50,
+      "period": "anniversary_year",
+      "categories": [
+        "travel"
+      ],
+      "channel": "portal",
+      "creditedAmountEarnsPoints": false
+    }
+  ],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/capital-one-miles/"
+  ]
+}

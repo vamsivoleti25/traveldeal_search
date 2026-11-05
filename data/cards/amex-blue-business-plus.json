@@ -1,0 +1,28 @@
+{
+  "id": "amex-blue-business-plus",
+  "name": "Blue Business Plus Card from American Express",
+  "issuer": "amex",
+  "network": "amex",
+  "type": "business",
+  "annualFee": 0,
+  "currency": "amex_mr",
+  "baseRate": 1,
+  "portal": "amex_travel",
+  "earn": [
+    {
+      "categories": [
+        "everything"
+      ],
+      "channel": "any",
+      "rate": 2,
+      "cap": 50000,
+      "capPeriod": "calendar_year"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/amex-membership-rewards-points/"
+  ]
+}

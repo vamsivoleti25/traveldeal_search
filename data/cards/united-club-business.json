@@ -1,0 +1,26 @@
+{
+  "id": "united-club-business",
+  "name": "United Club Business Card",
+  "issuer": "chase",
+  "network": "visa",
+  "type": "business",
+  "annualFee": 695,
+  "currency": "united_miles",
+  "baseRate": 1.5,
+  "earn": [
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": "direct",
+      "rate": 2,
+      "merchant": "united"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/united-mileageplus-miles/"
+  ]
+}

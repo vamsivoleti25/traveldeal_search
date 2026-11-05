@@ -1,0 +1,38 @@
+{
+  "id": "citi-custom-cash",
+  "name": "Citi Custom Cash",
+  "issuer": "citi",
+  "network": "mastercard",
+  "type": "personal",
+  "annualFee": 0,
+  "currency": "citi_typ",
+  "baseRate": 1,
+  "portal": "citi_travel",
+  "earn": [
+    {
+      "categories": [
+        "dining",
+        "gas",
+        "grocery",
+        "travel",
+        "transit",
+        "streaming",
+        "drugstore",
+        "home_improvement",
+        "fitness",
+        "entertainment"
+      ],
+      "channel": "any",
+      "rate": 5,
+      "cap": 500,
+      "capPeriod": "billing_cycle",
+      "condition": "This is your top eligible spend category this billing cycle"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/citi-thankyou-rewards-points/cards/citi-custom-cash/"
+  ]
+}

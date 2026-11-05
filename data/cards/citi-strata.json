@@ -1,0 +1,48 @@
+{
+  "id": "citi-strata",
+  "name": "Citi Strata",
+  "issuer": "citi",
+  "network": "mastercard",
+  "type": "personal",
+  "annualFee": 0,
+  "currency": "citi_typ",
+  "baseRate": 1,
+  "portal": "citi_travel",
+  "earn": [
+    {
+      "categories": [
+        "hotel",
+        "car_rental",
+        "attraction"
+      ],
+      "channel": "portal",
+      "rate": 5,
+      "note": "Citi Travel"
+    },
+    {
+      "categories": [
+        "grocery",
+        "transit",
+        "gas"
+      ],
+      "channel": "any",
+      "rate": 3
+    },
+    {
+      "categories": [
+        "dining"
+      ],
+      "channel": "any",
+      "rate": 2
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/citi-thankyou-rewards-points/"
+  ],
+  "notes": [
+    "3x in one self-selected category is not modeled."
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "citi-strata-elite",
+  "name": "Citi Strata Elite",
+  "issuer": "citi",
+  "network": "mastercard",
+  "type": "personal",
+  "annualFee": 595,
+  "currency": "citi_typ",
+  "baseRate": 1.5,
+  "portal": "citi_travel",
+  "earn": [
+    {
+      "categories": [
+        "hotel",
+        "car_rental",
+        "attraction"
+      ],
+      "channel": "portal",
+      "rate": 12,
+      "note": "Citi Travel"
+    },
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": "portal",
+      "rate": 6,
+      "note": "Air travel booked via Citi Travel"
+    },
+    {
+      "categories": [
+        "dining"
+      ],
+      "channel": "any",
+      "rate": 6,
+      "condition": "Citi Nights: Friday or Saturday, 6 PM\u20136 AM ET"
+    },
+    {
+      "categories": [
+        "dining"
+      ],
+      "channel": "any",
+      "rate": 3
+    }
+  ],
+  "credits": [
+    {
+      "id": "hotel-benefit",
+      "name": "$300 annual hotel benefit",
+      "amount": 300,
+      "period": "calendar_year",
+      "categories": [
+        "hotel"
+      ],
+      "channel": "portal",
+      "creditedAmountEarnsPoints": true,
+      "note": "Citi Travel hotel bookings; a 2-night minimum may apply."
+    }
+  ],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/citi-thankyou-rewards-points/"
+  ]
+}

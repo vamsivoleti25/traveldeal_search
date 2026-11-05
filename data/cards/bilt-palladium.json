@@ -1,0 +1,58 @@
+{
+  "id": "bilt-palladium",
+  "name": "Bilt Palladium Card",
+  "issuer": "bilt",
+  "network": "mastercard",
+  "type": "personal",
+  "annualFee": 495,
+  "currency": "bilt_points",
+  "baseRate": 2,
+  "portal": "bilt_travel",
+  "earn": [
+    {
+      "categories": [
+        "hotel"
+      ],
+      "channel": "portal",
+      "rate": 4,
+      "note": "Bilt Travel"
+    },
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": "portal",
+      "rate": 3,
+      "note": "Bilt Travel"
+    },
+    {
+      "categories": [
+        "rideshare"
+      ],
+      "channel": "any",
+      "rate": 4,
+      "condition": "Lyft account linked to Bilt"
+    }
+  ],
+  "credits": [
+    {
+      "id": "hotel-credit",
+      "name": "$400 Bilt Travel hotel credit",
+      "amount": 400,
+      "period": "calendar_year",
+      "categories": [
+        "hotel"
+      ],
+      "channel": "portal",
+      "creditedAmountEarnsPoints": true
+    }
+  ],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/bilt-rewards-points/"
+  ],
+  "notes": [
+    "Rent and mortgage earn up to 1.25x depending on everyday spend; not modeled."
+  ]
+}

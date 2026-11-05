@@ -1,0 +1,42 @@
+{
+  "id": "chase-ink-business-cash",
+  "name": "Ink Business Cash",
+  "issuer": "chase",
+  "network": "visa",
+  "type": "business",
+  "annualFee": 0,
+  "currency": "chase_ur",
+  "baseRate": 1,
+  "portal": "chase_travel",
+  "earn": [
+    {
+      "categories": [
+        "office_supply",
+        "phone_internet"
+      ],
+      "channel": "any",
+      "rate": 5,
+      "cap": 25000,
+      "capPeriod": "anniversary_year"
+    },
+    {
+      "categories": [
+        "gas",
+        "dining"
+      ],
+      "channel": "any",
+      "rate": 2,
+      "cap": 25000,
+      "capPeriod": "anniversary_year"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/chase-ultimate-rewards-points/"
+  ],
+  "notes": [
+    "5x at office supply stores is a classic way to buy gift cards."
+  ]
+}

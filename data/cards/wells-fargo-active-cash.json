@@ -1,0 +1,17 @@
+{
+  "id": "wells-fargo-active-cash",
+  "name": "Wells Fargo Active Cash",
+  "issuer": "wells_fargo",
+  "network": "visa",
+  "type": "personal",
+  "annualFee": 0,
+  "currency": "cash_back",
+  "baseRate": 2,
+  "earn": [],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://thepointsparty.com/articles/best-flat-rate-cash-back-cards"
+  ]
+}

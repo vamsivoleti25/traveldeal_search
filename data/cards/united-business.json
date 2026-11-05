@@ -1,0 +1,36 @@
+{
+  "id": "united-business",
+  "name": "United Business Card",
+  "issuer": "chase",
+  "network": "visa",
+  "type": "business",
+  "annualFee": 150,
+  "currency": "united_miles",
+  "baseRate": 1,
+  "earn": [
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": "direct",
+      "rate": 2,
+      "merchant": "united"
+    },
+    {
+      "categories": [
+        "dining",
+        "gas",
+        "office_supply",
+        "transit"
+      ],
+      "channel": "any",
+      "rate": 2
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/united-mileageplus-miles/"
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "id": "chase-sapphire-preferred",
+  "name": "Chase Sapphire Preferred",
+  "issuer": "chase",
+  "network": "visa",
+  "type": "personal",
+  "annualFee": 95,
+  "currency": "chase_ur",
+  "baseRate": 1,
+  "portal": "chase_travel",
+  "earn": [
+    {
+      "categories": [
+        "travel"
+      ],
+      "channel": "portal",
+      "rate": 5,
+      "note": "Travel purchased through Chase Travel"
+    },
+    {
+      "categories": [
+        "dining",
+        "streaming",
+        "gas",
+        "vacation_rental"
+      ],
+      "channel": "any",
+      "rate": 3,
+      "note": "Dining, select streaming, gas & EV charging, vacation rentals (June 2026 refresh)"
+    },
+    {
+      "categories": [
+        "grocery"
+      ],
+      "channel": "any",
+      "rate": 3,
+      "condition": "Online grocery purchases only (excludes Target, Walmart and wholesale clubs)"
+    },
+    {
+      "categories": [
+        "travel"
+      ],
+      "channel": [
+        "direct",
+        "ota"
+      ],
+      "rate": 2,
+      "note": "All other travel"
+    },
+    {
+      "categories": [
+        "rideshare"
+      ],
+      "channel": "any",
+      "rate": 5,
+      "validUntil": "2027-09-30",
+      "note": "Lyft rides"
+    }
+  ],
+  "credits": [
+    {
+      "id": "hotel-credit",
+      "name": "Chase Travel hotel credit",
+      "amount": 100,
+      "period": "anniversary_year",
+      "categories": [
+        "hotel"
+      ],
+      "channel": "portal",
+      "creditedAmountEarnsPoints": false,
+      "note": "Doubled from $50 to $100 in the June 2026 refresh. The credited amount earns no points."
+    }
+  ],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred",
+    "https://www.thepointcalculator.com/us/chase-ultimate-rewards-points/",
+    "https://www.businesswire.com/news/home/20260615099861/en/Meet-the-New-Chase-Sapphire-Preferred-Earn-More-Than-Ever-Same-95-Annual-Fee"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "id": "us-bank-altitude-connect",
+  "name": "U.S. Bank Altitude Connect",
+  "issuer": "us_bank",
+  "network": "visa",
+  "type": "personal",
+  "annualFee": 0,
+  "currency": "us_bank_points",
+  "baseRate": 1,
+  "portal": "us_bank_travel",
+  "earn": [
+    {
+      "categories": [
+        "hotel",
+        "car_rental"
+      ],
+      "channel": "portal",
+      "rate": 5,
+      "prepaidOnly": true,
+      "note": "Prepaid, in the Altitude Rewards Center"
+    },
+    {
+      "categories": [
+        "travel"
+      ],
+      "channel": "any",
+      "rate": 4
+    },
+    {
+      "categories": [
+        "gas"
+      ],
+      "channel": "any",
+      "rate": 4,
+      "cap": 1000,
+      "capPeriod": "quarter",
+      "note": "Gas and EV charging"
+    },
+    {
+      "categories": [
+        "dining",
+        "streaming",
+        "grocery"
+      ],
+      "channel": "any",
+      "rate": 2
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/us-bank-altitude-rewards-points/"
+  ]
+}

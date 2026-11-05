@@ -1,0 +1,43 @@
+{
+  "id": "capital-one-savor",
+  "name": "Capital One Savor",
+  "issuer": "capital_one",
+  "network": "mastercard",
+  "type": "personal",
+  "annualFee": 0,
+  "currency": "cash_back",
+  "baseRate": 1,
+  "portal": "capital_one_travel",
+  "earn": [
+    {
+      "categories": [
+        "hotel",
+        "car_rental",
+        "vacation_rental"
+      ],
+      "channel": "portal",
+      "rate": 5,
+      "note": "Capital One Travel"
+    },
+    {
+      "categories": [
+        "dining",
+        "grocery",
+        "entertainment",
+        "streaming"
+      ],
+      "channel": "any",
+      "rate": 3,
+      "note": "Grocery excludes superstores like Walmart and Target"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/capital-one-cash-back/cards/capital-one-savor-rewards-credit-card/"
+  ],
+  "notes": [
+    "8% on Capital One Entertainment purchases not modeled."
+  ]
+}

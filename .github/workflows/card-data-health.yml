@@ -1,0 +1,41 @@
+name: Card data health
+
+# Monthly check that flags expired rotating categories, limited-time rates about to end,
+# and cards that haven't been re-verified in 180+ days. Opens or updates one issue.
+
+on:
+  schedule:
+    - cron: '23 14 1 * *' # 1st of each month, 14:23 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build report
+        run: npm run report
+      - name: Open or update the tracking issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if grep -q "Nothing needs attention" card-data-report.md; then
+            echo "Card data is healthy."
+            exit 0
+          fi
+          gh label create card-data --color FBCA04 --description "Card data needs review" 2>/dev/null || true
+          number=$(gh issue list --label card-data --state open --json number --jq '.[0].number')
+          if [ -n "$number" ]; then
+            gh issue comment "$number" --body-file card-data-report.md
+          else
+            gh issue create --title "Card data needs review" --label card-data --body-file card-data-report.md
+          fi

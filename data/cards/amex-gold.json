@@ -1,0 +1,80 @@
+{
+  "id": "amex-gold",
+  "name": "American Express Gold Card",
+  "issuer": "amex",
+  "network": "amex",
+  "type": "personal",
+  "annualFee": 325,
+  "currency": "amex_mr",
+  "baseRate": 1,
+  "portal": "amex_travel",
+  "earn": [
+    {
+      "categories": [
+        "hotel"
+      ],
+      "channel": "portal",
+      "rate": 5,
+      "prepaidOnly": true,
+      "note": "Prepaid hotels through Amex Travel (2026 refresh, up from 2x)"
+    },
+    {
+      "categories": [
+        "dining"
+      ],
+      "channel": "any",
+      "rate": 4,
+      "cap": 50000,
+      "capPeriod": "calendar_year",
+      "note": "Restaurants worldwide"
+    },
+    {
+      "categories": [
+        "grocery"
+      ],
+      "channel": "any",
+      "rate": 4,
+      "cap": 25000,
+      "capPeriod": "calendar_year",
+      "note": "U.S. supermarkets"
+    },
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": [
+        "direct",
+        "portal"
+      ],
+      "rate": 3,
+      "note": "Flights booked directly or through Amex Travel"
+    },
+    {
+      "categories": [
+        "car_rental"
+      ],
+      "channel": "portal",
+      "rate": 2,
+      "prepaidOnly": true,
+      "note": "Prepaid car rentals through Amex Travel"
+    },
+    {
+      "categories": [
+        "cruise"
+      ],
+      "channel": "portal",
+      "rate": 2,
+      "note": "Cruises booked through Amex Travel"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.americanexpress.com/us/credit-cards/card/gold-card/",
+    "https://www.thepointcalculator.com/us/amex-membership-rewards-points/"
+  ],
+  "notes": [
+    "Dining and Uber credits are not travel-related and are not modeled."
+  ]
+}

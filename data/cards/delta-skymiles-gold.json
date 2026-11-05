@@ -1,0 +1,37 @@
+{
+  "id": "delta-skymiles-gold",
+  "name": "Delta SkyMiles Gold American Express Card",
+  "issuer": "amex",
+  "network": "amex",
+  "type": "personal",
+  "annualFee": 150,
+  "currency": "delta_miles",
+  "baseRate": 1,
+  "earn": [
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": "direct",
+      "rate": 2,
+      "merchant": "delta"
+    },
+    {
+      "categories": [
+        "dining",
+        "grocery"
+      ],
+      "channel": "any",
+      "rate": 2
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/delta-skymiles/"
+  ],
+  "notes": [
+    "$0 intro annual fee the first year. Delta Stays credit not modeled."
+  ]
+}

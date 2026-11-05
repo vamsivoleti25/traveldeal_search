@@ -1,0 +1,50 @@
+{
+  "id": "capital-one-venture-x-business",
+  "name": "Capital One Venture X Business",
+  "issuer": "capital_one",
+  "network": "visa",
+  "type": "business",
+  "annualFee": 395,
+  "currency": "capital_one_miles",
+  "baseRate": 2,
+  "portal": "capital_one_travel",
+  "earn": [
+    {
+      "categories": [
+        "hotel",
+        "car_rental"
+      ],
+      "channel": "portal",
+      "rate": 10,
+      "note": "Capital One Business Travel"
+    },
+    {
+      "categories": [
+        "flight",
+        "vacation_rental"
+      ],
+      "channel": "portal",
+      "rate": 5,
+      "note": "Capital One Business Travel"
+    }
+  ],
+  "credits": [
+    {
+      "id": "travel-credit",
+      "name": "$300 Capital One Travel credit",
+      "amount": 300,
+      "period": "anniversary_year",
+      "categories": [
+        "travel"
+      ],
+      "channel": "portal",
+      "creditedAmountEarnsPoints": false,
+      "note": "Only for bookings made through Capital One Travel. Whether the credited amount earns miles is not confirmed; modeled conservatively as no."
+    }
+  ],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/capital-one-miles/"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "capital-one-quicksilver",
+  "name": "Capital One Quicksilver",
+  "issuer": "capital_one",
+  "network": "mastercard",
+  "type": "personal",
+  "annualFee": 0,
+  "currency": "cash_back",
+  "baseRate": 1.5,
+  "portal": "capital_one_travel",
+  "earn": [
+    {
+      "categories": [
+        "hotel",
+        "car_rental",
+        "vacation_rental"
+      ],
+      "channel": "portal",
+      "rate": 5,
+      "note": "Capital One Travel"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/capital-one-cash-back/cards/capital-one-quicksilver-cash-rewards-credit-card/"
+  ]
+}

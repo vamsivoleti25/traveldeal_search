@@ -1,0 +1,35 @@
+{
+  "id": "ihg-premier-select",
+  "name": "IHG One Rewards Premier Select",
+  "issuer": "chase",
+  "network": "mastercard",
+  "type": "personal",
+  "annualFee": 350,
+  "currency": "ihg_points",
+  "baseRate": 3,
+  "earn": [
+    {
+      "categories": [
+        "hotel"
+      ],
+      "channel": "direct",
+      "rate": 12,
+      "merchant": "ihg"
+    },
+    {
+      "categories": [
+        "dining",
+        "travel",
+        "rideshare"
+      ],
+      "channel": "any",
+      "rate": 6
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/ihg-one-rewards-points/"
+  ]
+}

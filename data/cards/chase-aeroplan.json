@@ -1,0 +1,64 @@
+{
+  "id": "chase-aeroplan",
+  "name": "Air Canada Aeroplan Card",
+  "issuer": "chase",
+  "network": "mastercard",
+  "type": "personal",
+  "annualFee": 195,
+  "currency": "aeroplan_points",
+  "baseRate": 1,
+  "earn": [
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": "direct",
+      "rate": 3,
+      "merchant": "air_canada",
+      "note": "Air Canada purchases"
+    },
+    {
+      "categories": [
+        "travel"
+      ],
+      "channel": "any",
+      "rate": 3,
+      "note": "New travel category (Sept 2026 refresh)"
+    },
+    {
+      "categories": [
+        "dining",
+        "grocery"
+      ],
+      "channel": "any",
+      "rate": 3,
+      "validUntil": "2026-12-31",
+      "note": "3x through 12/31/26, then 2x"
+    },
+    {
+      "categories": [
+        "dining",
+        "grocery"
+      ],
+      "channel": "any",
+      "rate": 2,
+      "validFrom": "2027-01-01"
+    },
+    {
+      "categories": [
+        "gas"
+      ],
+      "channel": "any",
+      "rate": 2
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://thepointsparty.com/articles/chase-aeroplan-card-refresh-september-2026"
+  ],
+  "notes": [
+    "Fee rose from $95 to $195 on Sept 10, 2026. Up to $100/yr Air Canada credits not modeled."
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "marriott-bonvoy-bountiful",
+  "name": "Marriott Bonvoy Bountiful",
+  "issuer": "chase",
+  "network": "visa",
+  "type": "personal",
+  "annualFee": 250,
+  "currency": "marriott_bonvoy",
+  "baseRate": 2,
+  "earn": [
+    {
+      "categories": [
+        "hotel"
+      ],
+      "channel": "direct",
+      "rate": 6,
+      "merchant": "marriott"
+    },
+    {
+      "categories": [
+        "dining",
+        "grocery"
+      ],
+      "channel": "any",
+      "rate": 4
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": true,
+  "sources": [
+    "https://www.thepointcalculator.com/us/marriott-bonvoy-points/"
+  ],
+  "notes": [
+    "Source only summarized rates; caps not confirmed."
+  ]
+}

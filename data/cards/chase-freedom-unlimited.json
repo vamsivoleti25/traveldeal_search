@@ -1,0 +1,39 @@
+{
+  "id": "chase-freedom-unlimited",
+  "name": "Chase Freedom Unlimited",
+  "issuer": "chase",
+  "network": "visa",
+  "type": "personal",
+  "annualFee": 0,
+  "currency": "chase_ur",
+  "baseRate": 1.5,
+  "portal": "chase_travel",
+  "earn": [
+    {
+      "categories": [
+        "travel"
+      ],
+      "channel": "portal",
+      "rate": 5,
+      "note": "Chase Travel"
+    },
+    {
+      "categories": [
+        "dining",
+        "drugstore"
+      ],
+      "channel": "any",
+      "rate": 3
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited",
+    "https://www.thepointcalculator.com/us/chase-ultimate-rewards-points/"
+  ],
+  "notes": [
+    "Points are cash back unless combined with a Sapphire or Ink Preferred card."
+  ]
+}

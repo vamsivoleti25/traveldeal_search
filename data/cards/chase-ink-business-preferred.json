@@ -1,0 +1,41 @@
+{
+  "id": "chase-ink-business-preferred",
+  "name": "Ink Business Preferred",
+  "issuer": "chase",
+  "network": "visa",
+  "type": "business",
+  "annualFee": 95,
+  "currency": "chase_ur",
+  "baseRate": 1,
+  "portal": "chase_travel",
+  "earn": [
+    {
+      "categories": [
+        "travel",
+        "shipping",
+        "phone_internet",
+        "advertising"
+      ],
+      "channel": "any",
+      "rate": 3,
+      "cap": 150000,
+      "capPeriod": "anniversary_year",
+      "note": "Combined $150k cap per anniversary year"
+    },
+    {
+      "categories": [
+        "rideshare"
+      ],
+      "channel": "any",
+      "rate": 5,
+      "validUntil": "2027-09-30",
+      "note": "Lyft rides"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/chase-ultimate-rewards-points/"
+  ]
+}

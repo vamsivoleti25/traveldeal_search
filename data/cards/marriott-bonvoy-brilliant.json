@@ -1,0 +1,41 @@
+{
+  "id": "marriott-bonvoy-brilliant",
+  "name": "Marriott Bonvoy Brilliant American Express Card",
+  "issuer": "amex",
+  "network": "amex",
+  "type": "personal",
+  "annualFee": 650,
+  "currency": "marriott_bonvoy",
+  "baseRate": 2,
+  "earn": [
+    {
+      "categories": [
+        "hotel"
+      ],
+      "channel": "direct",
+      "rate": 6,
+      "merchant": "marriott"
+    },
+    {
+      "categories": [
+        "dining"
+      ],
+      "channel": "any",
+      "rate": 3
+    },
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": "direct",
+      "rate": 3,
+      "note": "Flights booked directly with airlines"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/marriott-bonvoy-points/"
+  ]
+}

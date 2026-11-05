@@ -1,0 +1,56 @@
+{
+  "id": "hilton-honors-surpass",
+  "name": "Hilton Honors American Express Surpass Card",
+  "issuer": "amex",
+  "network": "amex",
+  "type": "personal",
+  "annualFee": 150,
+  "currency": "hilton_points",
+  "baseRate": 3,
+  "earn": [
+    {
+      "categories": [
+        "hotel"
+      ],
+      "channel": "direct",
+      "rate": 12,
+      "merchant": "hilton"
+    },
+    {
+      "categories": [
+        "dining",
+        "grocery",
+        "gas"
+      ],
+      "channel": "any",
+      "rate": 6
+    },
+    {
+      "categories": [
+        "online_retail"
+      ],
+      "channel": "any",
+      "rate": 4
+    }
+  ],
+  "credits": [
+    {
+      "id": "hilton-credit",
+      "name": "$50 quarterly Hilton credit",
+      "amount": 50,
+      "period": "quarterly",
+      "categories": [
+        "hotel"
+      ],
+      "channel": "direct",
+      "creditedAmountEarnsPoints": true,
+      "merchant": "hilton",
+      "note": "Up to $200 a year at Hilton properties."
+    }
+  ],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/hilton-honors-points/"
+  ]
+}

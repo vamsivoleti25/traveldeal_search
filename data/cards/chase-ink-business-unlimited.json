@@ -1,0 +1,18 @@
+{
+  "id": "chase-ink-business-unlimited",
+  "name": "Ink Business Unlimited",
+  "issuer": "chase",
+  "network": "visa",
+  "type": "business",
+  "annualFee": 0,
+  "currency": "chase_ur",
+  "baseRate": 1.5,
+  "portal": "chase_travel",
+  "earn": [],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/chase-ultimate-rewards-points/"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "amex-blue-cash-everyday",
+  "name": "Blue Cash Everyday Card from American Express",
+  "issuer": "amex",
+  "network": "amex",
+  "type": "personal",
+  "annualFee": 0,
+  "currency": "cash_back",
+  "baseRate": 1,
+  "earn": [
+    {
+      "categories": [
+        "grocery"
+      ],
+      "channel": "any",
+      "rate": 3,
+      "cap": 6000,
+      "capPeriod": "calendar_year",
+      "note": "U.S. supermarkets"
+    },
+    {
+      "categories": [
+        "gas"
+      ],
+      "channel": "any",
+      "rate": 3,
+      "cap": 6000,
+      "capPeriod": "calendar_year"
+    },
+    {
+      "categories": [
+        "online_retail"
+      ],
+      "channel": "any",
+      "rate": 3,
+      "cap": 6000,
+      "capPeriod": "calendar_year"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/american-express-cash-back/cards/blue-cash-everyday-card-from-american-express/"
+  ]
+}

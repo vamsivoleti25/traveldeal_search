@@ -1,0 +1,53 @@
+{
+  "id": "chase-freedom-flex",
+  "name": "Chase Freedom Flex",
+  "issuer": "chase",
+  "network": "mastercard",
+  "type": "personal",
+  "annualFee": 0,
+  "currency": "chase_ur",
+  "baseRate": 1,
+  "portal": "chase_travel",
+  "earn": [
+    {
+      "categories": [
+        "travel"
+      ],
+      "channel": "portal",
+      "rate": 5,
+      "note": "Chase Travel"
+    },
+    {
+      "categories": [
+        "dining",
+        "drugstore"
+      ],
+      "channel": "any",
+      "rate": 3
+    },
+    {
+      "categories": [
+        "dining",
+        "grocery"
+      ],
+      "channel": "any",
+      "rate": 5,
+      "cap": 1500,
+      "capPeriod": "quarter",
+      "validFrom": "2026-10-01",
+      "validUntil": "2026-12-31",
+      "condition": "Q4 2026 bonus activated (grocery excludes Walmart and Target)",
+      "note": "Rotating 5% categories, Oct\u2013Dec 2026"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/chase-ultimate-rewards-points/",
+    "https://frequentmiler.com/curatedbestoffers/?ub=qUB2q"
+  ],
+  "notes": [
+    "Rotating 5% categories change every quarter; update the dated rule each quarter."
+  ]
+}

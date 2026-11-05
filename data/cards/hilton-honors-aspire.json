@@ -1,0 +1,65 @@
+{
+  "id": "hilton-honors-aspire",
+  "name": "Hilton Honors American Express Aspire Card",
+  "issuer": "amex",
+  "network": "amex",
+  "type": "personal",
+  "annualFee": 550,
+  "currency": "hilton_points",
+  "baseRate": 3,
+  "portal": "amex_travel",
+  "earn": [
+    {
+      "categories": [
+        "hotel"
+      ],
+      "channel": "direct",
+      "rate": 14,
+      "merchant": "hilton"
+    },
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": [
+        "direct",
+        "portal"
+      ],
+      "rate": 7,
+      "note": "Airfare direct with airlines or via amextravel.com"
+    },
+    {
+      "categories": [
+        "car_rental",
+        "dining"
+      ],
+      "channel": "any",
+      "rate": 7
+    }
+  ],
+  "credits": [
+    {
+      "id": "flight-credit",
+      "name": "$50 quarterly flight credit",
+      "amount": 50,
+      "period": "quarterly",
+      "categories": [
+        "flight"
+      ],
+      "channel": [
+        "direct",
+        "portal"
+      ],
+      "creditedAmountEarnsPoints": true,
+      "note": "Up to $200 a year on flights purchased directly or through Amex Travel."
+    }
+  ],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/hilton-honors-points/"
+  ],
+  "notes": [
+    "Up to $400/yr Hilton resort credit not modeled (resort properties only)."
+  ]
+}

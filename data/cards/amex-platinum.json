@@ -1,0 +1,59 @@
+{
+  "id": "amex-platinum",
+  "name": "The Platinum Card from American Express",
+  "issuer": "amex",
+  "network": "amex",
+  "type": "personal",
+  "annualFee": 895,
+  "currency": "amex_mr",
+  "baseRate": 1,
+  "portal": "amex_travel",
+  "earn": [
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": [
+        "direct",
+        "portal"
+      ],
+      "rate": 5,
+      "cap": 500000,
+      "capPeriod": "calendar_year",
+      "note": "Flights booked directly with airlines or through Amex Travel"
+    },
+    {
+      "categories": [
+        "hotel"
+      ],
+      "channel": "portal",
+      "rate": 5,
+      "prepaidOnly": true,
+      "note": "Prepaid hotels through Amex Travel"
+    }
+  ],
+  "credits": [
+    {
+      "id": "hotel-credit",
+      "name": "Fine Hotels + Resorts / The Hotel Collection credit",
+      "amount": 300,
+      "period": "semiannual",
+      "categories": [
+        "hotel"
+      ],
+      "channel": "portal",
+      "creditedAmountEarnsPoints": true,
+      "requiresTag": "amex_fhr_thc",
+      "note": "Up to $300 per half-year on prepaid FHR or The Hotel Collection bookings (Hotel Collection needs 2+ nights; FHR adds a 2-night minimum from Jan 1, 2027)."
+    }
+  ],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+    "https://www.thepointcalculator.com/us/amex-membership-rewards-points/"
+  ],
+  "notes": [
+    "The airline fee credit covers incidentals, not tickets, so it is not modeled."
+  ]
+}

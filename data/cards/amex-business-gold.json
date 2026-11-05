@@ -1,0 +1,42 @@
+{
+  "id": "amex-business-gold",
+  "name": "American Express Business Gold Card",
+  "issuer": "amex",
+  "network": "amex",
+  "type": "business",
+  "annualFee": 375,
+  "currency": "amex_mr",
+  "baseRate": 1,
+  "portal": "amex_travel",
+  "earn": [
+    {
+      "categories": [
+        "dining",
+        "gas",
+        "transit",
+        "advertising",
+        "shipping",
+        "phone_internet"
+      ],
+      "channel": "any",
+      "rate": 4,
+      "condition": "This is one of your top two eligible spend categories this month"
+    },
+    {
+      "categories": [
+        "flight",
+        "hotel"
+      ],
+      "channel": "portal",
+      "rate": 3,
+      "prepaidOnly": true,
+      "note": "Flights and prepaid hotels on AmexTravel.com"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/amex-membership-rewards-points/"
+  ]
+}

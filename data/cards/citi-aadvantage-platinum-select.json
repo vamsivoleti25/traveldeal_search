@@ -1,0 +1,37 @@
+{
+  "id": "citi-aadvantage-platinum-select",
+  "name": "Citi / AAdvantage Platinum Select",
+  "issuer": "citi",
+  "network": "mastercard",
+  "type": "personal",
+  "annualFee": 99,
+  "currency": "aa_miles",
+  "baseRate": 1,
+  "earn": [
+    {
+      "categories": [
+        "flight"
+      ],
+      "channel": "direct",
+      "rate": 2,
+      "merchant": "american"
+    },
+    {
+      "categories": [
+        "dining",
+        "gas"
+      ],
+      "channel": "any",
+      "rate": 2
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/american-airlines-aadvantage-miles/"
+  ],
+  "notes": [
+    "$0 intro annual fee the first year."
+  ]
+}

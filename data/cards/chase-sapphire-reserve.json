@@ -1,0 +1,71 @@
+{
+  "id": "chase-sapphire-reserve",
+  "name": "Chase Sapphire Reserve",
+  "issuer": "chase",
+  "network": "visa",
+  "type": "personal",
+  "annualFee": 795,
+  "currency": "chase_ur",
+  "baseRate": 1,
+  "portal": "chase_travel",
+  "earn": [
+    {
+      "categories": [
+        "travel"
+      ],
+      "channel": "portal",
+      "rate": 8,
+      "note": "All purchases through Chase Travel, including The Edit"
+    },
+    {
+      "categories": [
+        "flight",
+        "hotel"
+      ],
+      "channel": "direct",
+      "rate": 4,
+      "note": "Flights and hotels booked direct"
+    },
+    {
+      "categories": [
+        "dining"
+      ],
+      "channel": "any",
+      "rate": 3
+    },
+    {
+      "categories": [
+        "rideshare"
+      ],
+      "channel": "any",
+      "rate": 5,
+      "validUntil": "2027-09-30",
+      "note": "Lyft rides"
+    }
+  ],
+  "credits": [
+    {
+      "id": "travel-credit",
+      "name": "$300 annual travel credit",
+      "amount": 300,
+      "period": "anniversary_year",
+      "categories": [
+        "travel"
+      ],
+      "channel": "any",
+      "creditedAmountEarnsPoints": false,
+      "note": "Applies to anything that codes as travel, so it does not favor one booking channel over another."
+    }
+  ],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+    "https://www.thepointcalculator.com/us/chase-ultimate-rewards-points/"
+  ],
+  "notes": [
+    "Points Boost can make points worth up to 2 cents on select Chase Travel bookings; set your cents-per-point accordingly.",
+    "Other travel not booked direct or through Chase Travel earns 1x.",
+    "Also includes credits for The Edit hotels, dining, DoorDash and more that are not modeled."
+  ]
+}

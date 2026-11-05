@@ -1,0 +1,35 @@
+{
+  "id": "apple-card",
+  "name": "Apple Card",
+  "issuer": "apple",
+  "network": "mastercard",
+  "type": "personal",
+  "annualFee": 0,
+  "currency": "cash_back",
+  "baseRate": 1,
+  "earn": [
+    {
+      "categories": [
+        "online_retail"
+      ],
+      "channel": "any",
+      "rate": 3,
+      "merchant": "apple",
+      "note": "Apple and select merchants with Apple Pay"
+    },
+    {
+      "categories": [
+        "everything"
+      ],
+      "channel": "any",
+      "rate": 2,
+      "condition": "Paid with Apple Pay"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://thepointsparty.com/articles/best-flat-rate-cash-back-cards"
+  ]
+}

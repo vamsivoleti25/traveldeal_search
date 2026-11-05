@@ -1,0 +1,30 @@
+{
+  "id": "bofa-premium-rewards",
+  "name": "Bank of America Premium Rewards",
+  "issuer": "bank_of_america",
+  "network": "visa",
+  "type": "personal",
+  "annualFee": 95,
+  "currency": "bofa_points",
+  "baseRate": 1.5,
+  "earn": [
+    {
+      "categories": [
+        "travel",
+        "dining"
+      ],
+      "channel": "any",
+      "rate": 2
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/bank-of-america-rewards-points/"
+  ],
+  "notes": [
+    "BofA Rewards relationship tiers boost points 10%\u201375%; set a higher cents-per-point to model your tier.",
+    "$100 airline incidental credit not modeled."
+  ]
+}

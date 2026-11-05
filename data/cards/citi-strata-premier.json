@@ -1,0 +1,62 @@
+{
+  "id": "citi-strata-premier",
+  "name": "Citi Strata Premier",
+  "issuer": "citi",
+  "network": "mastercard",
+  "type": "personal",
+  "annualFee": 95,
+  "currency": "citi_typ",
+  "baseRate": 1,
+  "portal": "citi_travel",
+  "earn": [
+    {
+      "categories": [
+        "hotel",
+        "car_rental",
+        "attraction"
+      ],
+      "channel": "portal",
+      "rate": 10,
+      "note": "Citi Travel"
+    },
+    {
+      "categories": [
+        "flight",
+        "hotel"
+      ],
+      "channel": "any",
+      "rate": 3,
+      "note": "Air travel and other hotel purchases"
+    },
+    {
+      "categories": [
+        "dining",
+        "grocery",
+        "gas"
+      ],
+      "channel": "any",
+      "rate": 3
+    }
+  ],
+  "credits": [
+    {
+      "id": "hotel-benefit",
+      "name": "$100 off a $500+ hotel stay",
+      "amount": 100,
+      "period": "calendar_year",
+      "categories": [
+        "hotel"
+      ],
+      "channel": "portal",
+      "creditedAmountEarnsPoints": true,
+      "minSpend": 500,
+      "note": "Once per calendar year on a single stay of $500+ (excluding taxes and fees) booked through Citi Travel."
+    }
+  ],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.citi.com/credit-cards/citi-strata-premier-credit-card",
+    "https://www.thepointcalculator.com/us/citi-thankyou-rewards-points/"
+  ]
+}

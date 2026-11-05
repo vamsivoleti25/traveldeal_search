@@ -1,0 +1,20 @@
+{
+  "id": "bofa-unlimited-cash",
+  "name": "Bank of America Unlimited Cash Rewards",
+  "issuer": "bank_of_america",
+  "network": "visa",
+  "type": "personal",
+  "annualFee": 0,
+  "currency": "cash_back",
+  "baseRate": 1.5,
+  "earn": [],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/bank-of-america-cash-back/cards/bank-of-america-customized-cash-rewards-credit-card/"
+  ],
+  "notes": [
+    "BofA Rewards relationship tiers boost points 10%\u201375%; set a higher cents-per-point to model your tier."
+  ]
+}

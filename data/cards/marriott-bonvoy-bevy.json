@@ -1,0 +1,37 @@
+{
+  "id": "marriott-bonvoy-bevy",
+  "name": "Marriott Bonvoy Bevy American Express Card",
+  "issuer": "amex",
+  "network": "amex",
+  "type": "personal",
+  "annualFee": 250,
+  "currency": "marriott_bonvoy",
+  "baseRate": 2,
+  "earn": [
+    {
+      "categories": [
+        "hotel"
+      ],
+      "channel": "direct",
+      "rate": 6,
+      "merchant": "marriott"
+    },
+    {
+      "categories": [
+        "dining",
+        "grocery"
+      ],
+      "channel": "any",
+      "rate": 4
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": true,
+  "sources": [
+    "https://www.thepointcalculator.com/us/marriott-bonvoy-points/"
+  ],
+  "notes": [
+    "Source only summarized rates; a combined cap may apply to 4x."
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "chase-sapphire-reserve-business",
+  "name": "Sapphire Reserve for Business",
+  "issuer": "chase",
+  "network": "visa",
+  "type": "business",
+  "annualFee": 795,
+  "currency": "chase_ur",
+  "baseRate": 1,
+  "portal": "chase_travel",
+  "earn": [
+    {
+      "categories": [
+        "travel"
+      ],
+      "channel": "portal",
+      "rate": 8,
+      "note": "Chase Travel"
+    },
+    {
+      "categories": [
+        "flight",
+        "hotel"
+      ],
+      "channel": "direct",
+      "rate": 4,
+      "note": "Flights and hotels booked direct"
+    },
+    {
+      "categories": [
+        "advertising"
+      ],
+      "channel": "any",
+      "rate": 3,
+      "note": "Social media and search engine advertising"
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/chase-ultimate-rewards-points/"
+  ],
+  "notes": [
+    "Statement credits are not modeled yet."
+  ]
+}

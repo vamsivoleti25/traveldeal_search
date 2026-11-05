@@ -1,0 +1,47 @@
+{
+  "id": "amex-blue-cash-preferred",
+  "name": "Blue Cash Preferred Card from American Express",
+  "issuer": "amex",
+  "network": "amex",
+  "type": "personal",
+  "annualFee": 95,
+  "currency": "cash_back",
+  "baseRate": 1,
+  "earn": [
+    {
+      "categories": [
+        "grocery"
+      ],
+      "channel": "any",
+      "rate": 6,
+      "cap": 6000,
+      "capPeriod": "calendar_year",
+      "note": "U.S. supermarkets"
+    },
+    {
+      "categories": [
+        "streaming"
+      ],
+      "channel": "any",
+      "rate": 6
+    },
+    {
+      "categories": [
+        "transit",
+        "rideshare",
+        "gas"
+      ],
+      "channel": "any",
+      "rate": 3
+    }
+  ],
+  "credits": [],
+  "lastVerified": "2026-11-05",
+  "needsVerification": false,
+  "sources": [
+    "https://www.thepointcalculator.com/us/american-express-cash-back/cards/blue-cash-preferred-card-from-american-express/"
+  ],
+  "notes": [
+    "$0 intro annual fee the first year."
+  ]
+}
