@@ -86,7 +86,7 @@ def test_backup_restore_round_trip(repo, tmp_path):
 
     fresh = make_engine(url=f"sqlite:///{tmp_path / 'restored.db'}")
     counts = restore(fresh, json.loads(gzip.decompress(payload)))
-    assert counts == {"td_users": 1, "td_wallet_cards": 2, "td_user_settings": 1, "td_saved_comparisons": 1}
+    assert counts == {"td_users": 1, "td_wallet_cards": 2, "td_user_settings": 1, "td_saved_comparisons": 1, "td_credentials": 0}
     r2 = Repository(session_factory(fresh))
     assert sorted(r2.get_wallet(uid)) == ["amex-gold", "bilt-obsidian"]
     assert r2.get_settings(uid).valuation_mode == "transfer"
@@ -121,3 +121,95 @@ def test_email_allow_list():
     assert s.email_allowed(" ME@example.com ")
     assert not s.email_allowed("someone@example.com")
     assert not s.email_allowed(None)
+
+
+# Email + password accounts ---------------------------------------------------------------
+from datetime import timedelta  # noqa: E402
+
+from traveldeal import auth  # noqa: E402
+from traveldeal.auth import AuthError  # noqa: E402
+from traveldeal.db import Credential, LoginSession, utcnow  # noqa: E402
+
+
+def test_password_hash_round_trip_and_never_stores_plaintext():
+    h = auth.hash_password("correct horse")
+    assert h.startswith("scrypt$") and "correct horse" not in h
+    assert auth.verify_password("correct horse", h)
+    assert not auth.verify_password("Correct horse", h)
+    assert auth.hash_password("correct horse") != h  # random salt
+    assert not auth.verify_password("x", "garbage")
+
+
+def test_register_and_authenticate(repo):
+    r, _ = repo
+    uid = r.register(" Me@Example.com ", "correct horse", "Me")
+    assert r.authenticate("me@example.com", "correct horse") == uid
+    with pytest.raises(AuthError, match="don't match"):
+        r.authenticate("me@example.com", "nope nope nope")
+    with pytest.raises(AuthError, match="already exists"):
+        r.register("ME@example.com", "another password")
+    with pytest.raises(AuthError, match="valid email"):
+        r.register("not-an-email", "correct horse")
+    assert r.has_password(uid)
+    assert "password_hash" not in json.dumps(r.export_user(uid))
+
+
+def test_lockout_after_repeated_failures(repo):
+    r, _ = repo
+    r.register("me@example.com", "correct horse")
+    for _ in range(auth.MAX_FAILED_LOGINS):
+        with pytest.raises(AuthError, match="don't match"):
+            r.authenticate("me@example.com", "wrong password")
+    with pytest.raises(AuthError, match="Too many attempts"):
+        r.authenticate("me@example.com", "correct horse")  # even the right password waits
+
+
+def test_change_and_reset_password_and_sessions(repo):
+    r, engine = repo
+    uid = r.register("me@example.com", "correct horse")
+    token = r.create_login_session(uid)
+    assert r.user_for_session(token)["id"] == uid
+    assert r.user_for_session("not-a-token") is None
+    with pytest.raises(AuthError, match="current password"):
+        r.change_password(uid, "wrong", "new password 1")
+    r.change_password(uid, "correct horse", "new password 1")
+    assert r.authenticate("me@example.com", "new password 1") == uid
+    r.reset_password("me@example.com", "new password 2")  # server-side reset ends every session
+    assert r.user_for_session(token) is None
+    assert r.authenticate("me@example.com", "new password 2") == uid
+    token2 = r.create_login_session(uid)
+    r.end_login_session(token2)
+    assert r.user_for_session(token2) is None
+
+
+def test_expired_session_is_rejected_and_tokens_are_hashed(repo):
+    r, engine = repo
+    uid = r.register("me@example.com", "correct horse")
+    token = r.create_login_session(uid)
+    with session_factory(engine)() as s:
+        row = s.query(LoginSession).one()
+        assert row.token_hash != token and len(row.token_hash) == 64
+        row.expires_at = utcnow() - timedelta(seconds=1)
+        s.commit()
+    assert r.user_for_session(token) is None
+
+
+def test_delete_user_removes_credentials_and_sessions(repo):
+    r, engine = repo
+    uid = r.register("me@example.com", "correct horse")
+    r.create_login_session(uid)
+    r.delete_user(uid)
+    with session_factory(engine)() as s:
+        assert s.query(Credential).count() == 0 and s.query(LoginSession).count() == 0
+    r.register("me@example.com", "correct horse")  # the email can sign up again
+
+
+def test_backup_keeps_password_accounts(repo, tmp_path):
+    r, engine = repo
+    r.register("me@example.com", "correct horse")
+    data = snapshot(engine)
+    assert len(data["tables"]["td_credentials"]) == 1
+    assert "td_login_sessions" not in data["tables"]
+    fresh = make_engine(url=f"sqlite:///{tmp_path / 'restored.db'}")
+    restore(fresh, json.loads(json.dumps(data)))
+    assert Repository(session_factory(fresh)).authenticate("me@example.com", "correct horse")

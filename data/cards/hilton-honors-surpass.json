@@ -52,5 +52,13 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/hilton-honors-points/"
+  ],
+  "foreignTransactionFee": 0,
+  "freeNight": [
+    {
+      "program": "hilton",
+      "basis": "spend",
+      "spendThreshold": 15000
+    }
   ]
 }

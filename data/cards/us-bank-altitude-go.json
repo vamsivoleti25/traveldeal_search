@@ -32,5 +32,6 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/us-bank-altitude-rewards-points/"
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

@@ -59,6 +59,9 @@ def main() -> int:
                 b["avg12mPct"] = p.avg_12m_pct
             if p.high_12m_pct is not None:
                 b["high12mPct"] = p.high_12m_pct
+            if p.sellers:
+                b["sellers"] = [{"name": s.name, "slug": s.slug, "discountPct": s.discount_pct, "notes": s.notes}
+                                for s in p.sellers]
         except Exception as e:  # one brand failing shouldn't stop the run
             failed.append(f"{b['name']}: {e}")
         time.sleep(DELAY_SECONDS)

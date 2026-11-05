@@ -33,5 +33,6 @@
   ],
   "notes": [
     "Source only summarized rates; caps not confirmed."
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

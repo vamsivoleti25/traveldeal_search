@@ -55,6 +55,21 @@
       "channel": "any",
       "creditedAmountEarnsPoints": false,
       "note": "Applies to anything that codes as travel, so it does not favor one booking channel over another."
+    },
+    {
+      "id": "the-edit",
+      "name": "The Edit hotel credit ($250 twice a year)",
+      "amount": 500,
+      "maxPerBooking": 250,
+      "minNights": 2,
+      "period": "calendar_year",
+      "categories": [
+        "hotel"
+      ],
+      "channel": "portal",
+      "requiresTag": "chase_edit",
+      "creditedAmountEarnsPoints": false,
+      "note": "Prepaid stays of 2+ nights at The Edit hotels booked through Chase Travel. Two $250 credits per year; one per booking."
     }
   ],
   "lastVerified": "2026-11-05",
@@ -67,5 +82,11 @@
     "Points Boost can make points worth up to 2 cents on select Chase Travel bookings; set your cents-per-point accordingly.",
     "Other travel not booked direct or through Chase Travel earns 1x.",
     "Also includes credits for The Edit hotels, dining, DoorDash and more that are not modeled."
-  ]
+  ],
+  "foreignTransactionFee": 0,
+  "rentalCoverage": {
+    "type": "primary",
+    "maxDaysHome": 31,
+    "maxDaysAbroad": 31
+  }
 }

@@ -52,6 +52,20 @@
       ],
       "creditedAmountEarnsPoints": true,
       "note": "Up to $200 a year on flights purchased directly or through Amex Travel."
+    },
+    {
+      "id": "resort-credit",
+      "name": "Hilton resort credit ($200 each half-year)",
+      "amount": 200,
+      "period": "semiannual",
+      "categories": [
+        "hotel"
+      ],
+      "channel": "direct",
+      "merchant": "hilton",
+      "requiresTag": "hilton_resort",
+      "creditedAmountEarnsPoints": false,
+      "note": "Charges at participating Hilton Resorts booked directly with Hilton. Verify the property is on Hilton's eligible list."
     }
   ],
   "lastVerified": "2026-11-05",
@@ -61,5 +75,17 @@
   ],
   "notes": [
     "Up to $400/yr Hilton resort credit not modeled (resort properties only)."
+  ],
+  "foreignTransactionFee": 0,
+  "freeNight": [
+    {
+      "program": "hilton",
+      "basis": "annual"
+    },
+    {
+      "program": "hilton",
+      "basis": "spend",
+      "spendThreshold": 30000
+    }
   ]
 }

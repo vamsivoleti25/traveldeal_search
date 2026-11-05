@@ -24,10 +24,12 @@ from typing import Any
 from sqlalchemy import Engine, inspect, select
 
 from .config import get_settings
-from .db import AppUser, Base, SavedComparison, UserSettingsRow, WalletCard, init_db, make_engine
+from .db import AppUser, Base, Credential, SavedComparison, UserSettingsRow, WalletCard, init_db, make_engine
 
-# Parent tables first so a restore satisfies foreign keys.
-TABLES = [AppUser.__table__, WalletCard.__table__, UserSettingsRow.__table__, SavedComparison.__table__]
+# Parent tables first so a restore satisfies foreign keys. Password hashes are included so
+# accounts survive a restore (keep the bucket private); browser sessions are not, so everyone
+# simply signs in again after a restore.
+TABLES = [AppUser.__table__, WalletCard.__table__, UserSettingsRow.__table__, SavedComparison.__table__, Credential.__table__]
 
 
 def _jsonable(v: Any) -> Any:

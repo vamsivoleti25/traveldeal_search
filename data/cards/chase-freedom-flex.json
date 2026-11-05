@@ -37,7 +37,7 @@
       "validFrom": "2026-10-01",
       "validUntil": "2026-12-31",
       "condition": "Q4 2026 bonus activated (grocery excludes Walmart and Target)",
-      "note": "Rotating 5% categories, Oct\u2013Dec 2026"
+      "note": "Rotating 5% categories, Oct–Dec 2026"
     }
   ],
   "credits": [],
@@ -49,5 +49,6 @@
   ],
   "notes": [
     "Rotating 5% categories change every quarter; update the dated rule each quarter."
-  ]
+  ],
+  "foreignTransactionFee": 3
 }

@@ -55,5 +55,6 @@
   ],
   "notes": [
     "The airline fee credit covers incidentals, not tickets, so it is not modeled."
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

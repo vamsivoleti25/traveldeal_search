@@ -24,5 +24,6 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/capital-one-miles/"
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

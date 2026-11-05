@@ -29,5 +29,6 @@
   ],
   "notes": [
     "2% is 1% when you buy plus 1% when you pay."
-  ]
+  ],
+  "foreignTransactionFee": 3
 }

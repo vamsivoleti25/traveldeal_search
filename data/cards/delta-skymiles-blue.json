@@ -29,5 +29,6 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/delta-skymiles/"
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

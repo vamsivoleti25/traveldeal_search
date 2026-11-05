@@ -32,5 +32,6 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/marriott-bonvoy-points/"
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

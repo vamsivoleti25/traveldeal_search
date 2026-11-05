@@ -7,7 +7,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-from .models import Card, CatalogData, Currency, LoyaltyProgram
+from .models import Card, CatalogData, Currency, LoyaltyProgram, TransferData
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 
@@ -50,4 +50,5 @@ def load_catalog(data_dir: Path = DATA_DIR) -> CatalogData:
         cards=tuple(cards),
         currencies=tuple(Currency.from_dict(d) for d in _read(data_dir / "currencies.json")),
         loyalty=tuple(LoyaltyProgram.from_dict(d) for d in _read(data_dir / "loyalty.json")),
+        transfers=TransferData.from_dict(_read(data_dir / "transfers.json")) if (data_dir / "transfers.json").exists() else TransferData(),
     )

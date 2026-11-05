@@ -39,5 +39,12 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/delta-skymiles/"
-  ]
+  ],
+  "foreignTransactionFee": 0,
+  "checkedBags": {
+    "program": "delta",
+    "bags": 1,
+    "companions": 8,
+    "requiresPurchaseWithCard": false
+  }
 }

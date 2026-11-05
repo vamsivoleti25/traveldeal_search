@@ -44,5 +44,6 @@
   ],
   "notes": [
     "3x in one self-selected category is not modeled."
-  ]
+  ],
+  "foreignTransactionFee": null
 }

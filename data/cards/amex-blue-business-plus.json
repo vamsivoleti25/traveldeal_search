@@ -24,5 +24,6 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/amex-membership-rewards-points/"
-  ]
+  ],
+  "foreignTransactionFee": 2.7
 }

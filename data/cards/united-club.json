@@ -34,5 +34,17 @@
   ],
   "notes": [
     "Includes United Club membership. 5x Renowned Hotels and Resorts not modeled."
-  ]
+  ],
+  "foreignTransactionFee": 0,
+  "checkedBags": {
+    "program": "united",
+    "bags": 2,
+    "companions": 1,
+    "requiresPurchaseWithCard": true
+  },
+  "rentalCoverage": {
+    "type": "primary",
+    "maxDaysHome": 31,
+    "maxDaysAbroad": 31
+  }
 }

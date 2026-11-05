@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import streamlit as st
 
-from app import state
+from app import state, theme
 from traveldeal.catalog import ISSUER_LABELS, PORTAL_LABELS
 from traveldeal.engine import rule_is_active, today_iso
 from traveldeal.formatting import describe_credit, describe_rule, rule_details
@@ -11,8 +11,10 @@ from traveldeal.formatting import describe_credit, describe_rule, rule_details
 def render() -> None:
     cat = state.catalog()
     wallet = state.wallet()
-    st.title("Card catalog")
-    st.caption(f"{len(cat.cards)} U.S. rewards cards with every earning multiplier, cap and travel credit we track. {len(wallet)} in your wallet.")
+    theme.page_header("Cards", "Card catalog",
+                      f"{len(cat.cards)} U.S. rewards cards with every earning multiplier, cap and travel credit we track. "
+                      f"{len(wallet)} in your wallet.", key="catalog")
+    st.write("")
 
     f1, f2, f3, f4 = st.columns([3, 2, 2, 2])
     query = f1.text_input("Search cards", placeholder="Search cards")
@@ -36,10 +38,12 @@ def render() -> None:
     today = today_iso()
     cols = st.columns(3)
     for i, card in enumerate(cards):
-        with cols[i % 3].container(border=True):
+        with cols[i % 3].container(border=True, key=f"card-cat-{card.id}"):
             mine = card.id in wallet
-            st.caption(f"{ISSUER_LABELS[card.issuer].upper()}{' · BUSINESS' if card.type == 'business' else ''}")
-            st.markdown(f"**{card.name}**")
+            st.html(theme.card_art(card.name, card.issuer,
+                                   f"{ISSUER_LABELS[card.issuer]}{' · Business' if card.type == 'business' else ''}"))
+            if mine:
+                st.html('<span class="td-badge">In your wallet</span>')
             base = f"{card.base_rate:g}%" if card.currency == "cash_back" else f"{card.base_rate:g}x"
             portal = f" · {PORTAL_LABELS[card.portal]}" if card.portal else ""
             st.caption(f"${card.annual_fee:,.0f}/yr · base {base}{portal}")

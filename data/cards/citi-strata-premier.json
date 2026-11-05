@@ -58,5 +58,6 @@
   "sources": [
     "https://www.citi.com/credit-cards/citi-strata-premier-credit-card",
     "https://www.thepointcalculator.com/us/citi-thankyou-rewards-points/"
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

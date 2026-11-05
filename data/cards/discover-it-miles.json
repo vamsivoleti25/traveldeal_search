@@ -13,5 +13,6 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/discover-miles/"
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

@@ -65,6 +65,8 @@ class Credit:
     min_spend: float | None = None
     requires_tag: str | None = None
     note: str | None = None
+    max_per_booking: float | None = None
+    min_nights: int | None = None
 
     @classmethod
     def from_dict(cls, d: dict[str, Any]) -> Credit:
@@ -80,7 +82,53 @@ class Credit:
             min_spend=d.get("minSpend"),
             requires_tag=d.get("requiresTag"),
             note=d.get("note"),
+            max_per_booking=d.get("maxPerBooking"),
+            min_nights=d.get("minNights"),
         )
+
+
+@dataclass(frozen=True)
+class CheckedBags:
+    program: str
+    bags: int
+    companions: int
+    requires_purchase_with_card: bool
+    note: str | None = None
+
+    @classmethod
+    def from_dict(cls, d: dict[str, Any]) -> CheckedBags:
+        return cls(d["program"], int(d["bags"]), int(d["companions"]), bool(d["requiresPurchaseWithCard"]), d.get("note"))
+
+
+@dataclass(frozen=True)
+class RentalCoverage:
+    type: str  # "primary" | "secondary"
+    max_days_home: int | None = None
+    max_days_abroad: int | None = None
+    note: str | None = None
+
+    @classmethod
+    def from_dict(cls, d: dict[str, Any]) -> RentalCoverage:
+        return cls(d["type"], d.get("maxDaysHome"), d.get("maxDaysAbroad"), d.get("note"))
+
+
+@dataclass(frozen=True)
+class FreeNight:
+    program: str
+    basis: str  # "annual" | "spend"
+    cap_points: int | None = None
+    cap_category: str | None = None
+    spend_threshold: float | None = None
+    note: str | None = None
+
+    @classmethod
+    def from_dict(cls, d: dict[str, Any]) -> FreeNight:
+        return cls(d["program"], d["basis"], d.get("capPoints"), d.get("capCategory"), d.get("spendThreshold"), d.get("note"))
+
+    def describe(self) -> str:
+        cap = f"up to {self.cap_points:,} points" if self.cap_points else (self.cap_category or "standard room")
+        when = "every year on your card anniversary" if self.basis == "annual" else f"after ${self.spend_threshold:,.0f} spend in a year"
+        return f"1 free night ({cap}), {when}"
 
 
 @dataclass(frozen=True)
@@ -100,6 +148,10 @@ class Card:
     sources: tuple[str, ...]
     portal: str | None = None
     notes: tuple[str, ...] = ()
+    foreign_transaction_fee: float | None = 0.0  # percent; None = not verified
+    checked_bags: CheckedBags | None = None
+    rental_coverage: RentalCoverage | None = None
+    free_nights: tuple[FreeNight, ...] = ()
 
     @classmethod
     def from_dict(cls, d: dict[str, Any]) -> Card:
@@ -119,6 +171,10 @@ class Card:
             sources=tuple(d["sources"]),
             portal=d.get("portal"),
             notes=tuple(d.get("notes", [])),
+            foreign_transaction_fee=d.get("foreignTransactionFee", 0.0),
+            checked_bags=CheckedBags.from_dict(d["checkedBags"]) if d.get("checkedBags") else None,
+            rental_coverage=RentalCoverage.from_dict(d["rentalCoverage"]) if d.get("rentalCoverage") else None,
+            free_nights=tuple(FreeNight.from_dict(x) for x in d.get("freeNight", [])),
         )
 
 
@@ -159,6 +215,45 @@ class LoyaltyProgram:
         )
 
 
+@dataclass(frozen=True)
+class Transfer:
+    from_currency: str
+    to_program: str
+    ratio: float
+    cards: tuple[str, ...] = ()  # this ratio needs one of these cards; empty = any transfer-enabling card
+    note: str | None = None
+
+
+@dataclass(frozen=True)
+class TransferBonus:
+    from_currency: str
+    to_program: str
+    bonus_pct: float
+    until: str
+
+
+@dataclass(frozen=True)
+class TransferData:
+    program_currencies: dict[str, str] = field(default_factory=dict)
+    transfer_cards: dict[str, tuple[str, ...]] = field(default_factory=dict)
+    increments: dict[str, int] = field(default_factory=dict)
+    transfers: tuple[Transfer, ...] = ()
+    bonuses: tuple[TransferBonus, ...] = ()
+    as_of: str | None = None
+
+    @classmethod
+    def from_dict(cls, d: dict[str, Any]) -> TransferData:
+        return cls(
+            program_currencies=dict(d.get("programCurrencies", {})),
+            transfer_cards={k: tuple(v) for k, v in d.get("transferCards", {}).items()},
+            increments={k: int(v) for k, v in d.get("increments", {}).items()},
+            transfers=tuple(Transfer(t["from"], t["to"], float(t["ratio"]), tuple(t.get("cards", [])), t.get("note"))
+                            for t in d.get("transfers", [])),
+            bonuses=tuple(TransferBonus(b["from"], b["to"], float(b["bonusPct"]), b["until"]) for b in d.get("bonuses", [])),
+            as_of=d.get("asOf"),
+        )
+
+
 @dataclass
 class Channel:
     id: str
@@ -170,6 +265,18 @@ class Channel:
     gift_card_discount_pct: float | None = None
     gift_card_purchase_category: str | None = None
     tags: tuple[str, ...] = ()
+    cashback_pct: float = 0.0  # shopping portal (Rakuten etc.) on this channel
+    foreign_currency: str | None = None  # e.g. "EUR" when the card is charged in that currency
+    foreign_price: float | None = None  # the price in that currency
+
+
+@dataclass
+class CardOffer:
+    """A card-linked offer such as Amex Offers / Chase Offers: $X back on $Y+ at the merchant."""
+
+    card_id: str
+    amount_back: float
+    min_spend: float = 0.0
 
 
 @dataclass
@@ -178,6 +285,14 @@ class Booking:
     channels: list[Channel]
     merchant: str | None = None
     direct_perks_value: float = 0.0
+    offers: list[CardOffer] = field(default_factory=list)
+    nights: int = 1
+    travelers: int = 1
+    checked_bags: int = 0  # per traveler, per direction
+    bag_fee: float = 40.0  # first checked bag, one way
+    flight_legs: int = 2  # 1 = one way, 2 = round trip
+    rental_days: int = 0
+    rental_cdw_per_day: float = 0.0  # the rental counter's collision damage waiver
 
 
 @dataclass
@@ -189,6 +304,7 @@ class UserSettings:
     cap_spend_used: dict[str, float] = field(default_factory=dict)
     elite_status: dict[str, str] = field(default_factory=dict)
     loyalty_cpp_overrides: dict[str, float] = field(default_factory=dict)
+    card_anniversary_month: dict[str, int] = field(default_factory=dict)
     today: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
@@ -239,6 +355,10 @@ class CatalogData:
     cards: tuple[Card, ...]
     currencies: tuple[Currency, ...]
     loyalty: tuple[LoyaltyProgram, ...]
+    transfers: TransferData = field(default_factory=TransferData)
+
+    def currency(self, currency_id: str) -> Currency | None:
+        return next((c for c in self.currencies if c.id == currency_id), None)
 
     def card(self, card_id: str) -> Card | None:
         return next((c for c in self.cards if c.id == card_id), None)

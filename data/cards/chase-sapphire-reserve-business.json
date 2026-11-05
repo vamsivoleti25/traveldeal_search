@@ -35,7 +35,23 @@
       "note": "Social media and search engine advertising"
     }
   ],
-  "credits": [],
+  "credits": [
+    {
+      "id": "the-edit",
+      "name": "The Edit hotel credit ($250 twice a year)",
+      "amount": 500,
+      "maxPerBooking": 250,
+      "minNights": 2,
+      "period": "calendar_year",
+      "categories": [
+        "hotel"
+      ],
+      "channel": "portal",
+      "requiresTag": "chase_edit",
+      "creditedAmountEarnsPoints": false,
+      "note": "Prepaid stays of 2+ nights at The Edit hotels booked through Chase Travel. Two $250 credits per year; one per booking."
+    }
+  ],
   "lastVerified": "2026-11-05",
   "needsVerification": false,
   "sources": [
@@ -43,5 +59,6 @@
   ],
   "notes": [
     "Statement credits are not modeled yet."
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

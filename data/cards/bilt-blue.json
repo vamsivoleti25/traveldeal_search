@@ -42,5 +42,6 @@
   ],
   "notes": [
     "Rent and mortgage earn up to 1.25x depending on everyday spend; not modeled."
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

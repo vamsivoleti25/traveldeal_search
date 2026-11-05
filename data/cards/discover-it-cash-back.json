@@ -32,5 +32,6 @@
   ],
   "notes": [
     "Rotating 5% categories change every quarter; update the dated rule each quarter."
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

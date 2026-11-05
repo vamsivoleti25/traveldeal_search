@@ -43,5 +43,6 @@
   "needsVerification": false,
   "sources": [
     "https://cardcurator.ai/card/prime-visa"
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

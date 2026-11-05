@@ -40,6 +40,26 @@ CATEGORY_TO_BOOKING = {
 
 
 @dataclass(frozen=True)
+class GiftCardSeller:
+    """Where you can buy the gift card at a discount (a resale marketplace or an official retailer)."""
+
+    name: str
+    slug: str
+    discount_pct: float
+    notes: tuple[str, ...] = ()
+
+    @property
+    def conditional(self) -> bool:
+        """Offers that need something extra (e.g. "DashPass Required"); CardBear's headline discount skips them."""
+        return any("required" in n.lower() for n in self.notes)
+
+    @property
+    def guarantee_days(self) -> int | None:
+        m = next((n for n in self.notes if n.endswith("-Day Guarantee")), None)
+        return int(m.split("-")[0]) if m and m.split("-")[0].isdigit() else None
+
+
+@dataclass(frozen=True)
 class GiftCardBrand:
     id: str
     name: str
@@ -50,6 +70,12 @@ class GiftCardBrand:
     merchant: str | None = None
     avg_12m_pct: float | None = None
     high_12m_pct: float | None = None
+    sellers: tuple[GiftCardSeller, ...] = ()
+
+    @property
+    def best_seller(self) -> GiftCardSeller | None:
+        """Best seller anyone can buy from (offers with a membership requirement don't count)."""
+        return max((s for s in self.sellers if not s.conditional), key=lambda s: s.discount_pct, default=None)
 
 
 @dataclass(frozen=True)
@@ -75,6 +101,10 @@ def load_gift_cards(path: Path = DATA_DIR / "giftcards.json") -> GiftCardSnapsho
             merchant=b.get("merchant"),
             avg_12m_pct=b.get("avg12mPct"),
             high_12m_pct=b.get("high12mPct"),
+            sellers=tuple(
+                GiftCardSeller(x["name"], x.get("slug", x["name"].lower()), float(x["discountPct"]), tuple(x.get("notes", [])))
+                for x in sorted(b.get("sellers", []), key=lambda x: -x["discountPct"])
+            ),
         )
         for b in raw["brands"]
     )

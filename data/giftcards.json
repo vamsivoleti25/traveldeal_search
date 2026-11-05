@@ -3,7 +3,7 @@
   "source": {
     "name": "CardBear",
     "url": "https://www.cardbear.com/gift-cards/travel",
-    "note": "Snapshot of the best listed resale discount per brand. Rates change daily and stock sells out; always check the live page before buying."
+    "note": "Snapshot of each brand's in-stock sellers and their discounts. Rates change daily and stock sells out; always check the live page before buying."
   },
   "brands": [
     {
@@ -36,7 +36,53 @@
       "category": "rideshare",
       "travel": true,
       "discountPct": 14.5,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/551/uber"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/551/uber",
+      "sellers": [
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 14.5,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Carddepot",
+          "slug": "carddepot",
+          "discountPct": 13,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Raise",
+          "slug": "raise",
+          "discountPct": 12.4,
+          "notes": [
+            "90-Day Guarantee",
+            "Includes protection fee"
+          ]
+        },
+        {
+          "name": "paypal",
+          "slug": "paypal",
+          "discountPct": 10,
+          "notes": [
+            "Official Retailer"
+          ]
+        },
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 3.4,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "amtrak",
@@ -44,7 +90,45 @@
       "category": "rail",
       "travel": true,
       "discountPct": 14.5,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/726/amtrak"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/726/amtrak",
+      "sellers": [
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 14.5,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Carddepot",
+          "slug": "carddepot",
+          "discountPct": 13,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Raise",
+          "slug": "raise",
+          "discountPct": 11.5,
+          "notes": [
+            "90-Day Guarantee",
+            "Includes protection fee"
+          ]
+        },
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 5.8,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "barnes-noble",
@@ -68,7 +152,27 @@
       "category": "travel_booking",
       "travel": true,
       "discountPct": 11.9,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/820/tripgift"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/820/tripgift",
+      "sellers": [
+        {
+          "name": "Raise",
+          "slug": "raise",
+          "discountPct": 11.9,
+          "notes": [
+            "90-Day Guarantee",
+            "Includes protection fee"
+          ]
+        },
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 1,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "petsmart",
@@ -84,7 +188,53 @@
       "category": "hotel",
       "travel": true,
       "discountPct": 10.4,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/470/hotelscom"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/470/hotelscom",
+      "sellers": [
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 10.4,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Carddepot",
+          "slug": "carddepot",
+          "discountPct": 8,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Giftcardoutlets",
+          "slug": "giftcardoutlets",
+          "discountPct": 6.9,
+          "notes": [
+            "60-Day Guarantee"
+          ]
+        },
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 6.1,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Raise-Cashback",
+          "slug": "raisecashback",
+          "discountPct": 5,
+          "notes": [
+            "90-Day Guarantee",
+            "Reliable seller"
+          ]
+        }
+      ]
     },
     {
       "id": "circle-k",
@@ -101,7 +251,61 @@
       "travel": true,
       "discountPct": 10,
       "liveUrl": "https://www.cardbear.com/gift-card-discount/119/southwest-airlines",
-      "merchant": "southwest"
+      "merchant": "southwest",
+      "sellers": [
+        {
+          "name": "Carddepot",
+          "slug": "carddepot",
+          "discountPct": 10,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "DoorDash",
+          "slug": "doordash",
+          "discountPct": 10,
+          "notes": [
+            "DashPass Required"
+          ]
+        },
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 9.8,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Giftcardoutlets",
+          "slug": "giftcardoutlets",
+          "discountPct": 7.6,
+          "notes": [
+            "60-Day Guarantee"
+          ]
+        },
+        {
+          "name": "Raise",
+          "slug": "raise",
+          "discountPct": 5.2,
+          "notes": [
+            "90-Day Guarantee",
+            "Includes protection fee"
+          ]
+        },
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 4.4,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "seaworld",
@@ -109,7 +313,27 @@
       "category": "attraction",
       "travel": true,
       "discountPct": 10,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/821/seaworld"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/821/seaworld",
+      "sellers": [
+        {
+          "name": "Carddepot",
+          "slug": "carddepot",
+          "discountPct": 10,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Raise",
+          "slug": "raise",
+          "discountPct": 4.5,
+          "notes": [
+            "90-Day Guarantee",
+            "Includes protection fee"
+          ]
+        }
+      ]
     },
     {
       "id": "best-buy",
@@ -141,7 +365,54 @@
       "category": "cruise",
       "travel": true,
       "discountPct": 9.5,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/656/carnival-cruise-line"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/656/carnival-cruise-line",
+      "sellers": [
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 9.5,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Arbitrage",
+          "slug": "arbitrage",
+          "discountPct": 8,
+          "notes": [
+            "120-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Carddepot",
+          "slug": "carddepot",
+          "discountPct": 8,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Raise-Cashback",
+          "slug": "raisecashback",
+          "discountPct": 8,
+          "notes": [
+            "90-Day Guarantee",
+            "Reliable seller"
+          ]
+        },
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 7,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "marriott",
@@ -156,23 +427,47 @@
       "sellers": [
         {
           "name": "Cardcenter",
-          "discountPct": 9
+          "slug": "cardcenter",
+          "discountPct": 9,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
         },
         {
           "name": "Carddepot",
-          "discountPct": 8
+          "slug": "carddepot",
+          "discountPct": 8,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
         },
         {
-          "name": "CardCash",
-          "discountPct": 5.8
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 5.8,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
         },
         {
           "name": "Giftcardoutlets",
-          "discountPct": 5.1
+          "slug": "giftcardoutlets",
+          "discountPct": 5.1,
+          "notes": [
+            "60-Day Guarantee"
+          ]
         },
         {
-          "name": "Raise",
-          "discountPct": 5
+          "name": "Raise-Cashback",
+          "slug": "raisecashback",
+          "discountPct": 5,
+          "notes": [
+            "90-Day Guarantee",
+            "Reliable seller"
+          ]
         }
       ]
     },
@@ -182,7 +477,45 @@
       "category": "cruise",
       "travel": true,
       "discountPct": 9,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/565/royal-caribbean"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/565/royal-caribbean",
+      "sellers": [
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 9,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 7,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Arbitrage",
+          "slug": "arbitrage",
+          "discountPct": 6.7,
+          "notes": [
+            "120-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Carddepot",
+          "slug": "carddepot",
+          "discountPct": 5,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "virgin-experience",
@@ -190,7 +523,27 @@
       "category": "attraction",
       "travel": true,
       "discountPct": 9,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/844/virgin-experience"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/844/virgin-experience",
+      "sellers": [
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 9,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Raise-Cashback",
+          "slug": "raisecashback",
+          "discountPct": 5,
+          "notes": [
+            "90-Day Guarantee",
+            "Reliable seller"
+          ]
+        }
+      ]
     },
     {
       "id": "target",
@@ -214,7 +567,36 @@
       "category": "vacation_rental",
       "travel": true,
       "discountPct": 7.5,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/962/outdoorsy"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/962/outdoorsy",
+      "sellers": [
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 7.5,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Raise-Cashback",
+          "slug": "raisecashback",
+          "discountPct": 6,
+          "notes": [
+            "90-Day Guarantee",
+            "Reliable seller"
+          ]
+        },
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 5,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "delta-air-lines",
@@ -223,7 +605,36 @@
       "travel": true,
       "discountPct": 7,
       "liveUrl": "https://www.cardbear.com/gift-card-discount/331/delta-airlines",
-      "merchant": "delta"
+      "merchant": "delta",
+      "sellers": [
+        {
+          "name": "Carddepot",
+          "slug": "carddepot",
+          "discountPct": 7,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 6.5,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Raise",
+          "slug": "raise",
+          "discountPct": 5.5,
+          "notes": [
+            "90-Day Guarantee",
+            "Includes protection fee"
+          ]
+        }
+      ]
     },
     {
       "id": "princess-cruises",
@@ -231,7 +642,54 @@
       "category": "cruise",
       "travel": true,
       "discountPct": 6.5,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/630/princess-cruises"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/630/princess-cruises",
+      "sellers": [
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 6.5,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Arbitrage",
+          "slug": "arbitrage",
+          "discountPct": 5,
+          "notes": [
+            "120-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Carddepot",
+          "slug": "carddepot",
+          "discountPct": 5,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Raise-Cashback",
+          "slug": "raisecashback",
+          "discountPct": 5,
+          "notes": [
+            "90-Day Guarantee",
+            "Reliable seller"
+          ]
+        },
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 4.5,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "airlinegift",
@@ -239,7 +697,36 @@
       "category": "airline",
       "travel": true,
       "discountPct": 6,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/989/airlinegift"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/989/airlinegift",
+      "sellers": [
+        {
+          "name": "Raise-Cashback",
+          "slug": "raisecashback",
+          "discountPct": 6,
+          "notes": [
+            "90-Day Guarantee",
+            "Reliable seller"
+          ]
+        },
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 1.5,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 0.5,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "sephora",
@@ -263,7 +750,45 @@
       "category": "hotel",
       "travel": true,
       "discountPct": 5.8,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/396/ritz-carlton"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/396/ritz-carlton",
+      "sellers": [
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 5.8,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Raise",
+          "slug": "raise",
+          "discountPct": 3.6,
+          "notes": [
+            "90-Day Guarantee",
+            "Includes protection fee"
+          ]
+        },
+        {
+          "name": "Carddepot",
+          "slug": "carddepot",
+          "discountPct": 3,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 2.3,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "holland-america",
@@ -271,7 +796,45 @@
       "category": "cruise",
       "travel": true,
       "discountPct": 5.5,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/869/holland-america"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/869/holland-america",
+      "sellers": [
+        {
+          "name": "Carddepot",
+          "slug": "carddepot",
+          "discountPct": 5.5,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 5.5,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Raise-Cashback",
+          "slug": "raisecashback",
+          "discountPct": 5,
+          "notes": [
+            "90-Day Guarantee",
+            "Reliable seller"
+          ]
+        },
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 3.5,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "chevron",
@@ -295,7 +858,45 @@
       "category": "vacation_rental",
       "travel": true,
       "discountPct": 5,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/577/airbnb"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/577/airbnb",
+      "sellers": [
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 5,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Carddepot",
+          "slug": "carddepot",
+          "discountPct": 4,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Raise",
+          "slug": "raise",
+          "discountPct": 2.5,
+          "notes": [
+            "90-Day Guarantee",
+            "Includes protection fee"
+          ]
+        },
+        {
+          "name": "Arbitrage",
+          "slug": "arbitrage",
+          "discountPct": 0.5,
+          "notes": [
+            "120-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "american-airlines",
@@ -304,7 +905,36 @@
       "travel": true,
       "discountPct": 5,
       "liveUrl": "https://www.cardbear.com/gift-card-discount/153/american-airlines",
-      "merchant": "american"
+      "merchant": "american",
+      "sellers": [
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 5,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Carddepot",
+          "slug": "carddepot",
+          "discountPct": 4,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 2,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "best-western",
@@ -312,7 +942,36 @@
       "category": "hotel",
       "travel": true,
       "discountPct": 5,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/82/best-western"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/82/best-western",
+      "sellers": [
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 5,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 3.6,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Carddepot",
+          "slug": "carddepot",
+          "discountPct": 3.5,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "hyatt",
@@ -321,7 +980,27 @@
       "travel": true,
       "discountPct": 5,
       "liveUrl": "https://www.cardbear.com/gift-card-discount/280/hyatt",
-      "merchant": "hyatt"
+      "merchant": "hyatt",
+      "sellers": [
+        {
+          "name": "Carddepot",
+          "slug": "carddepot",
+          "discountPct": 5,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 3.1,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "lyft",
@@ -329,7 +1008,44 @@
       "category": "rideshare",
       "travel": true,
       "discountPct": 5,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/519/lyft"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/519/lyft",
+      "sellers": [
+        {
+          "name": "DoorDash",
+          "slug": "doordash",
+          "discountPct": 10,
+          "notes": [
+            "DashPass Required"
+          ]
+        },
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 5,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Raise",
+          "slug": "raise",
+          "discountPct": 2.8,
+          "notes": [
+            "90-Day Guarantee",
+            "Includes protection fee"
+          ]
+        },
+        {
+          "name": "Carddepot",
+          "slug": "carddepot",
+          "discountPct": 0.5,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "sheraton",
@@ -337,7 +1053,18 @@
       "category": "hotel",
       "travel": true,
       "discountPct": 5,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/967/sheraton"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/967/sheraton",
+      "sellers": [
+        {
+          "name": "Raise-Cashback",
+          "slug": "raisecashback",
+          "discountPct": 5,
+          "notes": [
+            "90-Day Guarantee",
+            "Reliable seller"
+          ]
+        }
+      ]
     },
     {
       "id": "global-hotel-card",
@@ -345,7 +1072,18 @@
       "category": "hotel",
       "travel": true,
       "discountPct": 4.5,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/359/global-hotel-card"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/359/global-hotel-card",
+      "sellers": [
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 4.5,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "hilton",
@@ -354,7 +1092,18 @@
       "travel": true,
       "discountPct": 4.4,
       "liveUrl": "https://www.cardbear.com/gift-card-discount/612/hilton",
-      "merchant": "hilton"
+      "merchant": "hilton",
+      "sellers": [
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 4.4,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "fairmont-hotels-and-resorts",
@@ -362,7 +1111,45 @@
       "category": "hotel",
       "travel": true,
       "discountPct": 4,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/775/fairmont-hotels-and-resorts"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/775/fairmont-hotels-and-resorts",
+      "sellers": [
+        {
+          "name": "Raise-Cashback",
+          "slug": "raisecashback",
+          "discountPct": 4,
+          "notes": [
+            "90-Day Guarantee",
+            "Reliable seller"
+          ]
+        },
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 3,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Carddepot",
+          "slug": "carddepot",
+          "discountPct": 2.4,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 2,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "home-depot",
@@ -378,7 +1165,45 @@
       "category": "attraction",
       "travel": true,
       "discountPct": 3,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/561/disney"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/561/disney",
+      "sellers": [
+        {
+          "name": "Carddepot",
+          "slug": "carddepot",
+          "discountPct": 3,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 2.4,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        },
+        {
+          "name": "Raise",
+          "slug": "raise",
+          "discountPct": 1.7,
+          "notes": [
+            "90-Day Guarantee",
+            "Includes protection fee"
+          ]
+        },
+        {
+          "name": "Cardcash",
+          "slug": "cardcash",
+          "discountPct": 1.5,
+          "notes": [
+            "45-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "ebay",
@@ -402,7 +1227,18 @@
       "category": "cruise",
       "travel": true,
       "discountPct": 1,
-      "liveUrl": "https://www.cardbear.com/gift-card-discount/913/disney-cruise-line"
+      "liveUrl": "https://www.cardbear.com/gift-card-discount/913/disney-cruise-line",
+      "sellers": [
+        {
+          "name": "Cardcenter",
+          "slug": "cardcenter",
+          "discountPct": 1,
+          "notes": [
+            "100-Day Guarantee",
+            "Quick Delivery"
+          ]
+        }
+      ]
     },
     {
       "id": "walmart",

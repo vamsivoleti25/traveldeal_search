@@ -42,5 +42,17 @@
   ],
   "notes": [
     "$0 intro annual fee the first year."
-  ]
+  ],
+  "foreignTransactionFee": 0,
+  "checkedBags": {
+    "program": "united",
+    "bags": 1,
+    "companions": 1,
+    "requiresPurchaseWithCard": true
+  },
+  "rentalCoverage": {
+    "type": "primary",
+    "maxDaysHome": 31,
+    "maxDaysAbroad": 31
+  }
 }

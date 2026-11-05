@@ -60,5 +60,6 @@
   ],
   "notes": [
     "Fee rose from $95 to $195 on Sept 10, 2026. Up to $100/yr Air Canada credits not modeled."
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

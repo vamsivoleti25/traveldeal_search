@@ -32,5 +32,12 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/southwest-rapid-rewards-points/"
-  ]
+  ],
+  "foreignTransactionFee": 0,
+  "checkedBags": {
+    "program": "southwest",
+    "bags": 1,
+    "companions": 8,
+    "requiresPurchaseWithCard": false
+  }
 }

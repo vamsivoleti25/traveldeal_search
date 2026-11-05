@@ -34,5 +34,12 @@
   ],
   "notes": [
     "6x on AAdvantage Hotels bookings not modeled."
-  ]
+  ],
+  "foreignTransactionFee": 0,
+  "checkedBags": {
+    "program": "american",
+    "bags": 1,
+    "companions": 8,
+    "requiresPurchaseWithCard": false
+  }
 }

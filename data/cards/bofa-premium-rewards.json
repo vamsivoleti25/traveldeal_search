@@ -24,7 +24,8 @@
     "https://www.thepointcalculator.com/us/bank-of-america-rewards-points/"
   ],
   "notes": [
-    "BofA Rewards relationship tiers boost points 10%\u201375%; set a higher cents-per-point to model your tier.",
+    "BofA Rewards relationship tiers boost points 10%–75%; set a higher cents-per-point to model your tier.",
     "$100 airline incidental credit not modeled."
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

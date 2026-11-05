@@ -77,5 +77,11 @@
     "https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred",
     "https://www.thepointcalculator.com/us/chase-ultimate-rewards-points/",
     "https://www.businesswire.com/news/home/20260615099861/en/Meet-the-New-Chase-Sapphire-Preferred-Earn-More-Than-Ever-Same-95-Annual-Fee"
-  ]
+  ],
+  "foreignTransactionFee": 0,
+  "rentalCoverage": {
+    "type": "primary",
+    "maxDaysHome": 31,
+    "maxDaysAbroad": 31
+  }
 }

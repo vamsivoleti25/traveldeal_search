@@ -5,29 +5,35 @@ import json
 import pandas as pd
 import streamlit as st
 
-from app import state
+from app import state, theme
 from app.booking_form import load_booking
 from app.pages import compare_page
 from traveldeal.engine import cpp_for
 from traveldeal.formatting import usd
 from traveldeal.models import UserSettings
 
-PROVIDER_LABELS = {"google": "Continue with Google", "oci": "Sign in with email and password"}
+def guest_panel() -> None:
+    theme.page_header("Account", "Save your trips", "You're trying TravelDeal as a guest, so nothing is saved yet.", key="account")
+    st.write("")
+    st.write("Create a free account to keep your cards, settings and saved trips, and see them on any device.")
+    st.button("Create an account or sign in", type="primary", on_click=state.sign_out)
 
 
-def sign_in_panel() -> None:
-    st.title("Your account")
-    providers = state.login_providers()
-    if not providers:
-        st.info(
-            "Sign-in isn't configured on this server yet. Locally, set AUTH_DEV_USER=you@example.com to try accounts, "
-            "or add an [auth] section to .streamlit/secrets.toml (see docs/DEPLOY_OCI.md)."
-        )
-        return
-    st.write("Sign in to keep your cards, settings and saved trips across devices.")
-    for p in providers:
-        st.button(PROVIDER_LABELS.get(p, f"Sign in with {p.title()}"), key=f"login_{p}", on_click=st.login, args=(p,), type="primary")
-    st.caption("We never see or store your password. Sign-in is handled by the provider you choose.")
+def _password_tab(user_id: int) -> None:
+    from traveldeal.auth import MIN_PASSWORD_LEN, AuthError
+
+    with st.form("change_password", clear_on_submit=True):
+        current = st.text_input("Current password", type="password", autocomplete="current-password")
+        new = st.text_input(f"New password · at least {MIN_PASSWORD_LEN} characters", type="password", autocomplete="new-password")
+        again = st.text_input("Confirm new password", type="password", autocomplete="new-password")
+        if st.form_submit_button("Change password", type="primary"):
+            try:
+                if new != again:
+                    raise AuthError("The two new passwords don't match.")
+                state.repository().change_password(user_id, current, new)
+                st.success("Password changed.")
+            except AuthError as e:
+                st.error(str(e))
 
 
 @st.dialog("Delete your account?")
@@ -36,32 +42,35 @@ def confirm_delete(user_id: int) -> None:
     typed = st.text_input('Type DELETE to confirm')
     if st.button("Delete everything", type="primary", disabled=typed != "DELETE"):
         state.repository().delete_user(user_id)
-        for k in ("td_user", "td_wallet", "td_settings"):
-            st.session_state.pop(k, None)
-        if state.auth_configured():
-            st.logout()
+        state.sign_out()
         st.rerun()
 
 
 def render() -> None:
     user = state.current_user()
     if not user:
-        sign_in_panel()
+        guest_panel()
         return
 
     repo = state.repository()
     cat = state.catalog()
-    st.title("Your account")
-    st.caption(f"Signed in as {user['name']} ({user['email'] or 'no email shared'})")
+    theme.page_header("Account", "Your account", f"Signed in as {user['name']} ({user['email'] or 'no email shared'})", key="account")
+    st.write("")
 
-    tab_trips, tab_settings, tab_data = st.tabs(["Saved trips", "Settings", "Your data"])
+    has_password = user.get("kind") == "password" or repo.has_password(user["id"])
+    names = ["Saved trips", "Settings", "Your data"] + (["Password"] if has_password else [])
+    tabs = st.tabs(names)
+    tab_trips, tab_settings, tab_data = tabs[:3]
+    if has_password:
+        with tabs[3]:
+            _password_tab(user["id"])
 
     with tab_trips:
         trips = repo.list_comparisons(user["id"])
         if not trips:
             st.info("No saved trips yet. Run a comparison and press **Save trip**.")
         for t in trips:
-            with st.container(border=True):
+            with st.container(border=True, key=f"card-trip-{t['id']}"):
                 a, b, c = st.columns([4, 1, 1])
                 a.markdown(f"**{t['name']}** · {t['created_at']:%b %d, %Y}")
                 a.caption(f"Best: {t['best_summary']} · {usd(t['best_effective_cost'])} effective cost")

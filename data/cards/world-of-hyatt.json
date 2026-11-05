@@ -41,5 +41,19 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/hyatt-points/cards/"
+  ],
+  "foreignTransactionFee": 0,
+  "freeNight": [
+    {
+      "program": "hyatt",
+      "basis": "annual",
+      "capCategory": "Category 1-4"
+    },
+    {
+      "program": "hyatt",
+      "basis": "spend",
+      "capCategory": "Category 1-4",
+      "spendThreshold": 15000
+    }
   ]
 }

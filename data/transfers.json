@@ -1,0 +1,76 @@
+{
+  "asOf": "2026-11-05",
+  "sources": [
+    "https://awardwallet.com/mile-transfer-times?program=Chase",
+    "https://awardwallet.com/mile-transfer-times?program=Amex",
+    "https://awardwallet.com/mile-transfer-times?program=Capital+One",
+    "https://awardwallet.com/mile-transfer-times?program=Citi",
+    "https://www.point.me/insights/bilt-transfer-partners/"
+  ],
+  "note": "Only partners among the 12 loyalty programs TravelDeal models. Ratio = partner points per 1 bank point.",
+  "programCurrencies": {
+    "marriott": "marriott_bonvoy",
+    "hilton": "hilton_points",
+    "hyatt": "hyatt_points",
+    "ihg": "ihg_points",
+    "delta": "delta_miles",
+    "united": "united_miles",
+    "american": "aa_miles",
+    "southwest": "southwest_points",
+    "jetblue": "jetblue_points",
+    "wyndham": "wyndham_points",
+    "alaska": "alaska_points",
+    "air_canada": "aeroplan_points"
+  },
+  "transferCards": {
+    "chase_ur": ["chase-sapphire-reserve", "chase-sapphire-reserve-business", "chase-sapphire-preferred", "chase-ink-business-preferred"],
+    "amex_mr": ["amex-platinum", "amex-business-platinum", "amex-gold", "amex-business-gold", "amex-green", "amex-blue-business-plus"],
+    "capital_one_miles": ["capital-one-venture-x", "capital-one-venture-x-business", "capital-one-venture", "capital-one-venture-business", "capital-one-ventureone"],
+    "citi_typ": ["citi-strata-elite", "citi-strata-premier", "citi-strata", "citi-double-cash", "citi-custom-cash"],
+    "bilt_points": ["bilt-palladium", "bilt-obsidian", "bilt-blue"]
+  },
+  "increments": {"chase_ur": 1000, "amex_mr": 1000, "citi_typ": 1000, "capital_one_miles": 100, "bilt_points": 1},
+  "transfers": [
+    {"from": "chase_ur", "to": "hyatt", "ratio": 1.0, "cards": ["chase-sapphire-reserve", "chase-sapphire-reserve-business"]},
+    {"from": "chase_ur", "to": "hyatt", "ratio": 0.75, "note": "0.75 unless you hold a Sapphire Reserve"},
+    {"from": "chase_ur", "to": "marriott", "ratio": 1.0},
+    {"from": "chase_ur", "to": "ihg", "ratio": 1.0},
+    {"from": "chase_ur", "to": "united", "ratio": 1.0},
+    {"from": "chase_ur", "to": "southwest", "ratio": 1.0},
+    {"from": "chase_ur", "to": "jetblue", "ratio": 1.0},
+    {"from": "chase_ur", "to": "wyndham", "ratio": 1.0},
+    {"from": "chase_ur", "to": "air_canada", "ratio": 1.0},
+
+    {"from": "amex_mr", "to": "marriott", "ratio": 1.0},
+    {"from": "amex_mr", "to": "hilton", "ratio": 2.0},
+    {"from": "amex_mr", "to": "delta", "ratio": 1.0},
+    {"from": "amex_mr", "to": "jetblue", "ratio": 0.8},
+    {"from": "amex_mr", "to": "air_canada", "ratio": 1.0},
+
+    {"from": "capital_one_miles", "to": "jetblue", "ratio": 0.6},
+    {"from": "capital_one_miles", "to": "wyndham", "ratio": 1.0},
+    {"from": "capital_one_miles", "to": "air_canada", "ratio": 1.0},
+
+    {"from": "citi_typ", "to": "american", "ratio": 1.0, "cards": ["citi-strata-premier", "citi-strata-elite"]},
+    {"from": "citi_typ", "to": "american", "ratio": 0.7},
+    {"from": "citi_typ", "to": "jetblue", "ratio": 1.0, "cards": ["citi-strata-premier", "citi-strata-elite"]},
+    {"from": "citi_typ", "to": "jetblue", "ratio": 0.7},
+    {"from": "citi_typ", "to": "wyndham", "ratio": 1.0, "cards": ["citi-strata-premier", "citi-strata-elite"]},
+    {"from": "citi_typ", "to": "wyndham", "ratio": 0.7},
+
+    {"from": "bilt_points", "to": "hyatt", "ratio": 1.0},
+    {"from": "bilt_points", "to": "marriott", "ratio": 1.0},
+    {"from": "bilt_points", "to": "hilton", "ratio": 1.0},
+    {"from": "bilt_points", "to": "ihg", "ratio": 1.0},
+    {"from": "bilt_points", "to": "united", "ratio": 1.0},
+    {"from": "bilt_points", "to": "southwest", "ratio": 1.0},
+    {"from": "bilt_points", "to": "jetblue", "ratio": 1.0},
+    {"from": "bilt_points", "to": "wyndham", "ratio": 1.0},
+    {"from": "bilt_points", "to": "alaska", "ratio": 1.0},
+    {"from": "bilt_points", "to": "air_canada", "ratio": 1.0}
+  ],
+  "bonuses": [
+    {"from": "chase_ur", "to": "ihg", "bonusPct": 80, "until": "2026-12-03"},
+    {"from": "chase_ur", "to": "wyndham", "bonusPct": 30, "until": "2026-12-03"}
+  ]
+}

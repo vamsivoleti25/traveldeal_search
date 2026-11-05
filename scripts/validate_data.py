@@ -73,6 +73,14 @@ def check(root: Path = ROOT, today: str | None = None) -> dict[str, list[str]]:
         for c in card["credits"]:
             if c.get("merchant") and c["merchant"] not in programs:
                 out["errors"].append(f"{path.name}: credit merchant {c['merchant']!r} is not in data/loyalty.json")
+        bags = card.get("checkedBags")
+        if bags and bags["program"] not in programs:
+            out["errors"].append(f"{path.name}: checkedBags program {bags['program']!r} is not in data/loyalty.json")
+        for f in card.get("freeNight", []):
+            if f["program"] not in programs:
+                out["errors"].append(f"{path.name}: freeNight program {f['program']!r} is not in data/loyalty.json")
+            if f["basis"] == "spend" and "spendThreshold" not in f:
+                out["errors"].append(f"{path.name}: spend-based freeNight needs spendThreshold")
 
         if card["lastVerified"]:
             if days_between(card["lastVerified"], today) > STALE_AFTER_DAYS:
@@ -81,6 +89,28 @@ def check(root: Path = ROOT, today: str | None = None) -> dict[str, list[str]]:
             out["errors"].append(f"{path.name}: lastVerified is null, so needsVerification must be true")
         if card["needsVerification"]:
             out["unverified"].append(card["name"])
+
+    transfers_path = root / "data/transfers.json"
+    if transfers_path.exists():
+        t = load(transfers_path)
+        for prog, cur in t.get("programCurrencies", {}).items():
+            if prog not in programs:
+                out["errors"].append(f"transfers.json: programCurrencies has unknown program {prog!r}")
+            if cur not in currencies:
+                out["errors"].append(f"transfers.json: programCurrencies has unknown currency {cur!r}")
+        for cur, cards in t.get("transferCards", {}).items():
+            out["errors"] += [f"transfers.json: transferCards[{cur}] has unknown card {c!r}" for c in cards if c not in ids]
+        for i, tr in enumerate(t.get("transfers", []) + t.get("bonuses", [])):
+            if tr["from"] not in currencies:
+                out["errors"].append(f"transfers.json: entry {i} has unknown currency {tr['from']!r}")
+            if tr["to"] not in programs:
+                out["errors"].append(f"transfers.json: entry {i} has unknown program {tr['to']!r}")
+            out["errors"] += [f"transfers.json: entry {i} has unknown card {c!r}" for c in tr.get("cards", []) if c not in ids]
+        for b in t.get("bonuses", []):
+            if b["until"] < today:
+                out["expired"].append(f"Transfer bonus {b['from']} -> {b['to']} +{b['bonusPct']:g}% (ended {b['until']})")
+            elif days_between(today, b["until"]) <= EXPIRING_SOON_DAYS:
+                out["expiring"].append(f"Transfer bonus {b['from']} -> {b['to']} +{b['bonusPct']:g}% (ends {b['until']})")
 
     out["count"] = [str(len(ids))]
     return out

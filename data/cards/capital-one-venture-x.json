@@ -50,5 +50,12 @@
   ],
   "notes": [
     "10,000 anniversary miles are not booking-dependent and are not modeled."
-  ]
+  ],
+  "foreignTransactionFee": 0,
+  "rentalCoverage": {
+    "type": "primary",
+    "maxDaysHome": 15,
+    "maxDaysAbroad": 31,
+    "note": "Vehicle MSRP up to $75,000; some countries excluded."
+  }
 }

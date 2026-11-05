@@ -22,5 +22,12 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/united-mileageplus-miles/"
-  ]
+  ],
+  "foreignTransactionFee": 0,
+  "checkedBags": {
+    "program": "united",
+    "bags": 2,
+    "companions": 1,
+    "requiresPurchaseWithCard": true
+  }
 }

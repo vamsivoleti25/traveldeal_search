@@ -31,5 +31,6 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/ihg-one-rewards-points/"
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

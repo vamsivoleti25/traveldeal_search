@@ -39,5 +39,6 @@
   ],
   "notes": [
     "8% on Capital One Entertainment purchases not modeled."
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

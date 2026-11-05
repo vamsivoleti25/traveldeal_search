@@ -26,5 +26,12 @@
   ],
   "notes": [
     "12x on AAdvantage Hotels and Cars bookings not modeled. Includes Admirals Club membership."
-  ]
+  ],
+  "foreignTransactionFee": 0,
+  "checkedBags": {
+    "program": "american",
+    "bags": 1,
+    "companions": 8,
+    "requiresPurchaseWithCard": false
+  }
 }

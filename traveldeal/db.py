@@ -30,7 +30,9 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship,
 
 from .config import Settings, get_settings
 
-SCHEMA_VERSION = 1
+# 2: email/password accounts (td_credentials, td_login_sessions). New tables only, so
+#    create_all upgrades a version-1 database in place.
+SCHEMA_VERSION = 2
 
 
 def utcnow() -> datetime:
@@ -91,6 +93,32 @@ class SavedComparison(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow, nullable=False)
 
     user: Mapped[AppUser] = relationship(back_populates="comparisons")
+
+
+class Credential(Base):
+    """Email + password sign-in for a user. Google users have no row here."""
+
+    __tablename__ = "td_credentials"
+
+    user_id: Mapped[int] = mapped_column(ForeignKey("td_users.id", ondelete="CASCADE"), primary_key=True)
+    email: Mapped[str] = mapped_column(String(320), unique=True, nullable=False)
+    password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
+    failed_attempts: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
+    locked_until: Mapped[datetime | None] = mapped_column(DateTime)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow, nullable=False)
+    password_changed_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow, nullable=False)
+
+
+class LoginSession(Base):
+    """A signed-in browser. Only the SHA-256 of the cookie token is stored."""
+
+    __tablename__ = "td_login_sessions"
+
+    id: Mapped[int] = mapped_column(Integer, Identity(start=1), primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("td_users.id", ondelete="CASCADE"), nullable=False, index=True)
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow, nullable=False)
+    expires_at: Mapped[datetime] = mapped_column(DateTime, nullable=False)
 
 
 class SchemaVersion(Base):

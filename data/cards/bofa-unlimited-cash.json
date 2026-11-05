@@ -15,6 +15,7 @@
     "https://www.thepointcalculator.com/us/bank-of-america-cash-back/cards/bank-of-america-customized-cash-rewards-credit-card/"
   ],
   "notes": [
-    "BofA Rewards relationship tiers boost points 10%\u201375%; set a higher cents-per-point to model your tier."
-  ]
+    "BofA Rewards relationship tiers boost points 10%–75%; set a higher cents-per-point to model your tier."
+  ],
+  "foreignTransactionFee": 3
 }

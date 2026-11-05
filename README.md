@@ -3,16 +3,22 @@
 Should you book that hotel or flight **direct**, through your **card's travel portal**, through an **online travel agency**, or with **discounted gift cards**? TravelDeal Search picks the cheapest way to pay with the credit cards you already hold.
 
 - **Compare a booking:** pick your cards, enter the price on each site, and get every channel × card combination ranked by effective cost.
-- **Gift card deals:** discounted travel gift cards with one-click "compare a booking".
+- **Stack the extras:** shopping-portal cashback, card-linked offers (Amex Offers, Chase Offers), foreign-currency prices with each card's foreign transaction fee, free checked bags and primary rental-car coverage all count in the ranking.
+- **Points vs cash:** enter the award price and see every way your cards can pay with points (the program's own points, transfers from Chase, Amex, Capital One, Citi or Bilt, or the bank portal), priced at your point values against the best way to pay cash. It also checks your free-night certificates.
+- **Benefits:** statement credits left to use and when each resets, free nights you hold, and which card to use for bags, rentals and foreign currency.
+- **Gift card deals:** discounted travel gift cards with the seller offering each top discount, and which of your cards to buy it with (seller discount + points earned). One click to use the deal in a comparison.
 - **Card catalog:** 97 U.S. rewards cards with every multiplier, cap, date and travel credit.
-- **Accounts:** sign in with Google (or invite-only email/password) to keep your wallet, settings and saved trips. Download or delete your data any time.
+- **Accounts:** create an account with email and password (or sign in with Google) to keep your wallet, settings and saved trips. Or try it as a guest. Download or delete your data any time.
 
 ```
 effective cost = amount charged
-               − statement credits applied
+               + foreign transaction fee (foreign-currency charges)
+               − statement credits and card-linked offers
+               − shopping-portal cashback
                − value of card points earned
                − value of airline / hotel points earned
                − value of elite perks (when they apply)
+               − checked bags and rental-car waiver you don't have to buy
 ```
 
 ## Run it locally
@@ -20,14 +26,16 @@ effective cost = amount charged
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements-dev.txt
-AUTH_DEV_USER=you@example.com streamlit run app/main.py
+streamlit run app/main.py
 ```
 
-Open http://localhost:8501. Locally the app uses SQLite (`local.db`) and a stand-in signed-in user, so no cloud setup is needed.
+Run it from the repo root so the theme in `.streamlit/` loads, then open http://localhost:8501. Locally the app uses SQLite (`local.db`). Create an account on the home screen, or set `AUTH_DEV_USER=you@example.com` to skip sign-in while developing.
+
+Tests (engine, database, accounts, backup/restore, app) and card-data checks:
 
 ```bash
-pytest -q                          # engine, database, backup/restore and app smoke tests
-python scripts/validate_data.py    # card data schema and health checks
+pytest -q
+python scripts/validate_data.py
 ```
 
 ## Run it on Oracle Cloud (personal mode)

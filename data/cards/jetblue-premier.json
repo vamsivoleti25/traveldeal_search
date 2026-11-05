@@ -30,5 +30,12 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/jetblue-trueblue-points/"
-  ]
+  ],
+  "foreignTransactionFee": 0,
+  "checkedBags": {
+    "program": "jetblue",
+    "bags": 1,
+    "companions": 3,
+    "requiresPurchaseWithCard": true
+  }
 }

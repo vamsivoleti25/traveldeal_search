@@ -34,5 +34,6 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/citi-thankyou-rewards-points/cards/citi-custom-cash/"
-  ]
+  ],
+  "foreignTransactionFee": 3
 }

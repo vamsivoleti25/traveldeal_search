@@ -32,5 +32,14 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/marriott-bonvoy-points/"
+  ],
+  "foreignTransactionFee": 0,
+  "freeNight": [
+    {
+      "program": "marriott",
+      "basis": "annual",
+      "capPoints": 35000,
+      "note": "Top off with up to 25,000 points."
+    }
   ]
 }

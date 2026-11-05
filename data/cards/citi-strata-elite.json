@@ -33,7 +33,7 @@
       ],
       "channel": "any",
       "rate": 6,
-      "condition": "Citi Nights: Friday or Saturday, 6 PM\u20136 AM ET"
+      "condition": "Citi Nights: Friday or Saturday, 6 PM–6 AM ET"
     },
     {
       "categories": [
@@ -61,5 +61,6 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/citi-thankyou-rewards-points/"
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

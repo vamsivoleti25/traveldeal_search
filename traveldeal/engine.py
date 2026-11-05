@@ -3,10 +3,13 @@
 For every (booking channel x card you hold) pair it computes
 
     effective cost = amount charged
-                     - statement credits applied
+                     + foreign transaction fee (foreign-currency charges)
+                     - statement credits and card-linked offers
+                     - shopping-portal cashback
                      - value of card points earned
                      - value of airline/hotel loyalty points earned
                      - value of elite perks (direct bookings)
+                     - checked bags and rental-car waiver you don't have to buy
 
 and ranks the options from cheapest to most expensive.
 """
@@ -20,6 +23,7 @@ from .models import (
     TRAVEL_TYPES,
     Booking,
     Card,
+    CardOffer,
     CatalogData,
     Channel,
     Credit,
@@ -87,6 +91,7 @@ class PurchaseContext:
     prepaid: bool = False
     merchant: str | None = None
     today: str = field(default_factory=today_iso)
+    nights: int = 1
 
 
 def purchase_context(booking: Booking, channel: Channel, today: str) -> PurchaseContext:
@@ -94,7 +99,7 @@ def purchase_context(booking: Booking, channel: Channel, today: str) -> Purchase
         # The card is charged when you buy the gift card, e.g. at a grocery store.
         return PurchaseContext(channel.gift_card_purchase_category or "other", "giftcard", False, None, today)
     prepaid = channel.prepaid if channel.prepaid is not None else channel.kind == "portal"
-    return PurchaseContext(booking.type, channel.kind, prepaid, booking.merchant, today)
+    return PurchaseContext(booking.type, channel.kind, prepaid, booking.merchant, today, max(1, booking.nights or 1))
 
 
 def rule_applies(rule: EarnRule, ctx: PurchaseContext) -> bool:
@@ -156,6 +161,8 @@ def credit_applies(credit: Credit, ctx: PurchaseContext, channel: Channel) -> bo
         return False
     if credit.merchant and credit.merchant != ctx.merchant:
         return False
+    if credit.min_nights and ctx.nights < credit.min_nights:
+        return False
     return True
 
 
@@ -174,6 +181,8 @@ def compute_credits(card: Card, ctx: PurchaseContext, channel: Channel, charged:
             continue
         used = settings.credits_used.get(f"{card.id}:{credit.id}", 0.0)
         amount = min(max(0.0, credit.amount - used), charged - result.applied)
+        if credit.max_per_booking is not None:
+            amount = min(amount, credit.max_per_booking)
         if amount <= 0:
             continue
         result.applied += amount
@@ -222,11 +231,76 @@ def compute_loyalty(booking: Booking, channel: Channel, program: LoyaltyProgram 
     return LoyaltyResult(round(points), points * cpp / 100, perks_value if perks_apply else 0.0, warnings)
 
 
-def evaluate(booking: Booking, channel: Channel, card: Card, data: CatalogData, settings: UserSettings) -> Option:
-    """Evaluate one channel paid with one card."""
+# ---------------------------------------------------------------- extras that stack on a booking
+def foreign_fee(card: Card, channel: Channel, charged: float) -> tuple[float, str | None]:
+    """Fee for a charge in a foreign currency. Returns (fee, warning)."""
+    if not channel.foreign_currency or channel.kind not in ("direct", "ota"):
+        return 0.0, None
+    if card.foreign_transaction_fee is None:
+        return 0.0, f"Check {card.name}'s foreign transaction fee before paying in {channel.foreign_currency}."
+    return charged * card.foreign_transaction_fee / 100, None
+
+
+def offer_value(card: Card, channel: Channel, offers: list[CardOffer], charged: float) -> list[LineItem]:
+    """Card-linked offers (Amex Offers, Chase Offers...) are for the merchant's own site."""
+    if channel.kind != "direct":
+        return []
+    items = []
+    for o in offers:
+        if o.card_id == card.id and o.amount_back > 0 and charged >= (o.min_spend or 0):
+            items.append(LineItem(f"Card offer: ${o.amount_back:g} back" + (f" on ${o.min_spend:g}+" if o.min_spend else ""),
+                                  -round2(min(o.amount_back, charged))))
+    return items
+
+
+def bag_savings(booking: Booking, channel: Channel, card: Card, wallet: list[Card]) -> tuple[float, str | None]:
+    """Free checked bags from an airline card. Cards that need the ticket bought with them only count
+    when this option pays with that card on the airline's own site."""
+    if booking.type != "flight" or not booking.merchant or booking.checked_bags <= 0 or booking.bag_fee <= 0:
+        return 0.0, None
+    best, label = 0.0, None
+    for held in wallet:
+        b = held.checked_bags
+        if b is None or b.program != booking.merchant:
+            continue
+        if b.requires_purchase_with_card and (held.id != card.id or channel.kind != "direct"):
+            continue
+        people = min(max(1, booking.travelers), 1 + b.companions)
+        bags = min(booking.checked_bags, b.bags)
+        # A second free bag is usually priced higher than the first; we value every bag at the first-bag fee.
+        saved = people * bags * booking.bag_fee * max(1, booking.flight_legs)
+        if saved > best:
+            best, label = saved, f"Free checked bags with {held.name} ({people} traveler{'s' if people > 1 else ''})"
+    return best, label
+
+
+def rental_waiver_savings(booking: Booking, card: Card) -> tuple[float, str | None, str | None]:
+    """Primary rental coverage lets you decline the counter's collision damage waiver."""
+    if booking.type != "car_rental" or booking.rental_days <= 0 or booking.rental_cdw_per_day <= 0:
+        return 0.0, None, None
+    cov = card.rental_coverage
+    if cov is None or cov.type != "primary":
+        return 0.0, None, None
+    warning = None
+    limit = cov.max_days_home
+    if limit and booking.rental_days > limit:
+        warning = (f"{card.name} covers rentals up to {limit} days at home"
+                   + (f" ({cov.max_days_abroad} abroad)" if cov.max_days_abroad and cov.max_days_abroad != limit else "")
+                   + "; longer rentals aren't covered.")
+        return 0.0, None, warning
+    return booking.rental_days * booking.rental_cdw_per_day, f"Skip the counter's collision waiver ({card.name} primary coverage)", warning
+
+
+def evaluate(booking: Booking, channel: Channel, card: Card, data: CatalogData, settings: UserSettings,
+             wallet: list[Card] | None = None) -> Option:
+    """Evaluate one channel paid with one card. `wallet` is every card held (for benefits like free bags)."""
+    wallet = wallet if wallet is not None else [card]
     ctx = purchase_context(booking, channel, settings.today or today_iso())
     warnings: list[str] = []
-    breakdown: list[LineItem] = [LineItem(f"{channel.label} price", round2(channel.price))]
+    price_label = f"{channel.label} price"
+    if channel.foreign_currency and channel.foreign_price:
+        price_label += f" ({channel.foreign_price:,.2f} {channel.foreign_currency})"
+    breakdown: list[LineItem] = [LineItem(price_label, round2(channel.price))]
 
     discount = (channel.gift_card_discount_pct or 0) / 100 if channel.kind == "giftcard" else 0.0
     charged = channel.price * (1 - discount)
@@ -237,6 +311,19 @@ def evaluate(booking: Booking, channel: Channel, card: Card, data: CatalogData, 
         CreditResult() if not settings.apply_credits else compute_credits(card, ctx, channel, charged, settings)
     )
     breakdown.extend(credits.items)
+    fee, fee_warning = foreign_fee(card, channel, charged)
+    if fee > 0:
+        breakdown.append(LineItem(f"Foreign transaction fee ({card.foreign_transaction_fee:g}%)", round2(fee)))
+    if fee_warning:
+        warnings.append(fee_warning)
+    offers = offer_value(card, channel, booking.offers, charged - credits.applied)
+    breakdown.extend(offers)
+    offers_total = -sum(i.amount for i in offers)
+    cashback = channel.price * (channel.cashback_pct or 0) / 100 if channel.kind in ("direct", "ota") else 0.0
+    if cashback > 0:
+        breakdown.append(LineItem(f"Shopping portal cashback ({channel.cashback_pct:g}%)", -round2(cashback)))
+        warnings.append("Shopping portals usually pay on the pre-tax price and take weeks to post; "
+                        "start the booking from the portal's link.")
     for credit in credits.used_credits:
         if credit.channel == "any":
             warnings.append(
@@ -261,6 +348,15 @@ def evaluate(booking: Booking, channel: Channel, card: Card, data: CatalogData, 
     if loyalty.perks > 0:
         breakdown.append(LineItem("Elite perks (your estimate)", -round2(loyalty.perks)))
 
+    bags, bags_label = bag_savings(booking, channel, card, wallet)
+    if bags > 0:
+        breakdown.append(LineItem(bags_label, -round2(bags)))
+    waiver, waiver_label, waiver_warning = rental_waiver_savings(booking, card)
+    if waiver > 0:
+        breakdown.append(LineItem(waiver_label, -round2(waiver)))
+    if waiver_warning:
+        warnings.append(waiver_warning)
+
     if channel.kind == "giftcard":
         warnings.append(
             "Confirm the merchant accepts gift cards for this booking. Some issuers exclude gift card purchases from bonus categories."
@@ -268,7 +364,8 @@ def evaluate(booking: Booking, channel: Channel, card: Card, data: CatalogData, 
     if card.needs_verification:
         warnings.append(f"{card.name} terms have not been verified yet.")
 
-    effective = charged - credits.applied - card_points_value - loyalty.value - loyalty.perks
+    effective = (charged + fee - credits.applied - offers_total - cashback - card_points_value
+                 - loyalty.value - loyalty.perks - bags - waiver)
     sticker_prices = [c.price for c in booking.channels if c.kind != "giftcard" and c.price > 0] + [channel.price]
     baseline = min(sticker_prices)
     return Option(
@@ -281,7 +378,7 @@ def evaluate(booking: Booking, channel: Channel, card: Card, data: CatalogData, 
         card_points=round(earn.points),
         card_currency=card.currency,
         card_points_value=round2(card_points_value),
-        credits_applied=round2(credits.applied),
+        credits_applied=round2(credits.applied + offers_total + cashback + bags + waiver - fee),
         loyalty_points=loyalty.points,
         loyalty_value=round2(loyalty.value),
         perks_value=round2(loyalty.perks),
@@ -295,7 +392,7 @@ def evaluate(booking: Booking, channel: Channel, card: Card, data: CatalogData, 
 def compare_options(booking: Booking, cards: list[Card], data: CatalogData, settings: UserSettings) -> list[Option]:
     """Every (channel x card) combination the user can actually book, cheapest first."""
     options = [
-        evaluate(booking, channel, card, data, settings)
+        evaluate(booking, channel, card, data, settings, wallet=cards)
         for channel in booking.channels
         if channel.price > 0
         for card in cards

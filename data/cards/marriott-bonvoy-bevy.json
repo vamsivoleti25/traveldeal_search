@@ -33,5 +33,14 @@
   ],
   "notes": [
     "Source only summarized rates; a combined cap may apply to 4x."
+  ],
+  "foreignTransactionFee": 0,
+  "freeNight": [
+    {
+      "program": "marriott",
+      "basis": "spend",
+      "capPoints": 50000,
+      "spendThreshold": 15000
+    }
   ]
 }

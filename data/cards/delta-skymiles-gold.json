@@ -33,5 +33,12 @@
   ],
   "notes": [
     "$0 intro annual fee the first year. Delta Stays credit not modeled."
-  ]
+  ],
+  "foreignTransactionFee": 0,
+  "checkedBags": {
+    "program": "delta",
+    "bags": 1,
+    "companions": 8,
+    "requiresPurchaseWithCard": false
+  }
 }

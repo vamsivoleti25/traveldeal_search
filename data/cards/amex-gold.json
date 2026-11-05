@@ -76,5 +76,6 @@
   ],
   "notes": [
     "Dining and Uber credits are not travel-related and are not modeled."
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

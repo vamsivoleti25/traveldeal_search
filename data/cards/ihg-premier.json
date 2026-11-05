@@ -44,5 +44,14 @@
   "sources": [
     "https://www.thepointcalculator.com/us/ihg-one-rewards-points/",
     "https://frequentmiler.com/best-credit-card-category-bonuses"
+  ],
+  "foreignTransactionFee": 0,
+  "freeNight": [
+    {
+      "program": "ihg",
+      "basis": "annual",
+      "capPoints": 40000,
+      "note": "Top off with points allowed."
+    }
   ]
 }

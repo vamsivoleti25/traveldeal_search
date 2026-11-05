@@ -32,5 +32,6 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/hilton-honors-points/"
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

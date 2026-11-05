@@ -33,5 +33,12 @@
   ],
   "notes": [
     "$0 intro annual fee the first year."
-  ]
+  ],
+  "foreignTransactionFee": 0,
+  "checkedBags": {
+    "program": "american",
+    "bags": 1,
+    "companions": 4,
+    "requiresPurchaseWithCard": false
+  }
 }

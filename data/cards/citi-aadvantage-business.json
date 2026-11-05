@@ -31,5 +31,6 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/american-airlines-aadvantage-miles/"
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

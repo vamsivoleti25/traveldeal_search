@@ -26,5 +26,6 @@
   "sources": [
     "https://www.capitalone.com/credit-cards/venture/",
     "https://www.thepointcalculator.com/us/capital-one-miles/"
-  ]
+  ],
+  "foreignTransactionFee": 0
 }

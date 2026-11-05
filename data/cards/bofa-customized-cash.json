@@ -89,6 +89,7 @@
   ],
   "notes": [
     "The $2,500 quarterly cap is shared between the 3% and 2% categories.",
-    "BofA Rewards relationship tiers boost points 10%\u201375%; set a higher cents-per-point to model your tier."
-  ]
+    "BofA Rewards relationship tiers boost points 10%–75%; set a higher cents-per-point to model your tier."
+  ],
+  "foreignTransactionFee": 3
 }

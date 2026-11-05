@@ -14,5 +14,6 @@
   "needsVerification": false,
   "sources": [
     "https://www.thepointcalculator.com/us/chase-ultimate-rewards-points/"
-  ]
+  ],
+  "foreignTransactionFee": 3
 }

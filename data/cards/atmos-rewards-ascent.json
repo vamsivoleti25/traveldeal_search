@@ -36,5 +36,12 @@
   ],
   "notes": [
     "10% points bonus with an eligible Bank of America account."
-  ]
+  ],
+  "foreignTransactionFee": 0,
+  "checkedBags": {
+    "program": "alaska",
+    "bags": 1,
+    "companions": 6,
+    "requiresPurchaseWithCard": true
+  }
 }

@@ -16,5 +16,6 @@
   ],
   "notes": [
     "2.5% on purchases of $5,000 or more is not modeled."
-  ]
+  ],
+  "foreignTransactionFee": null
 }

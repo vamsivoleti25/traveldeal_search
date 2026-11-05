@@ -4,7 +4,7 @@ A deliberately small setup for **one person (plus a few invited people) testing 
 
 | | Personal mode (this doc) | Production design |
 |---|---|---|
-| Who signs in | Google accounts on `ALLOWED_EMAILS` only | Anyone with Google; optional OCI Identity Domain |
+| Who signs in | Email/password accounts (and optional Google), limited to `ALLOWED_EMAILS` | Anyone with Google; optional OCI Identity Domain |
 | User data | SQLite file on the VM (Docker volume) | Autonomous Database |
 | How you reach it | Stage 1: SSH tunnel to `localhost`. Stage 2: HTTPS on your domain | HTTPS on your domain |
 | OCI services | 1 VM, 1 Object Storage bucket | VM, Autonomous Database, bucket, optional Identity Domain |
@@ -32,17 +32,24 @@ Dotted lines exist only in stage 2.
 
 ## 2. Login design
 
-**Choice:** Google sign-in through Streamlit's built-in OpenID Connect (`st.login`), gated by an email allow-list.
+**Choice:** our own email + password accounts (sign up on the home screen), with Google sign-in as an optional second button. Both are gated by `ALLOWED_EMAILS`.
 
-1. You click **Continue with Google** on the Account page. Streamlit runs the authorization-code flow and sets a signed, HTTP-only cookie (signed with `cookie_secret`). The app never sees a password.
-2. Each page run, `app/state.py` reads the verified identity. If `ALLOWED_EMAILS` is set and the email isn't on it (or Google says it's unverified), the visitor gets a "this server is private" screen with a sign-out button, and **nothing about them is written to the database.**
-3. Allowed users get a `td_users` row keyed by `issuer|sub` (stable even if the email changes). Every read and write is scoped to that row's id.
+**Screens.** Signed-out visitors land on the home page: a short pitch on the left, and a card with **Sign in** / **Create account** tabs on the right. *Try it without an account* opens the app as a guest; nothing a guest does is saved. The Account page has a **Password** tab for changing it.
 
-Two independent gates keep strangers out: the **allow-list** in the app, and Google's own **Testing** publishing status, which lets only the test users you list complete sign-in.
+**How email/password works**
 
-**What's stored about a user:** Google subject id, email, display name, created and last-login times. No passwords, tokens or card numbers. Cards are catalog ids like `chase-sapphire-reserve`.
+1. **Create account:** name (optional), email, password (8–128 characters), confirm. If `ALLOWED_EMAILS` is set, only those emails can sign up ("Sign-up is invite-only on this server").
+2. **Storage:** the password is hashed with **scrypt** and a random per-password salt (Python standard library, no extra dependency). Only the hash is stored, in `td_credentials`.
+3. **Staying signed in:** on sign-in the server creates a random session token and keeps only its SHA-256 in `td_login_sessions` (30-day expiry). The browser keeps the token in a `td_session` cookie (`SameSite=Strict`, and `Secure` over HTTPS), so a refresh or a new tab stays signed in.
+4. **Sign out** deletes that session row, so the old cookie stops working even if someone copied it.
+5. **Wrong passwords:** an unknown email and a wrong password get the same message and take the same time. After 5 wrong passwords the account is locked for 15 minutes.
+6. **Forgot password:** there's no email sending in personal mode. On the server, run `deploy/compose.sh run --rm app python -m traveldeal.auth reset-password you@example.com`. It also signs that account out everywhere.
 
-**Why not the alternatives:** rolling your own email/password means password hashing, reset emails and session handling, all for one user. The OCI Identity Domain works but is another console to configure; it stays available as an option in `secrets.toml.example`.
+**Google (optional).** If `[auth.google]` is filled in `.streamlit/secrets.toml`, a **Continue with Google** button appears under the form (Streamlit's `st.login`). Without it, email/password is all you need, and you can skip the Google Cloud setup in §5.2.
+
+**What's stored about a user:** email, display name, created and last-login times, the password hash, and active session-token hashes. Never a plain-text password or card numbers; cards are catalog ids like `chase-sapphire-reserve`.
+
+**Known limits, fine for personal use:** the cookie is set by a small script, so it can't be `HttpOnly`. Session tokens are hashed at rest, sign-out revokes them, and the app renders no user-supplied HTML. There's also no email verification or emailed password reset; adding those needs an email service.
 
 ## 3. Data storage design
 
@@ -97,7 +104,10 @@ No domain, no certificate, no open web ports. You browse to `http://localhost:85
    Allow dynamic-group traveldeal-vm to manage objects in compartment traveldeal where target.bucket.name='traveldeal-backups'
    ```
 
-### 5.2 Google sign-in client
+### 5.2 Google sign-in client (optional)
+
+Skip this if email/password is enough. Then leave the `[auth.google]` section out of `secrets.toml`, but keep `[auth]` with `cookie_secret`.
+
 
 1. https://console.cloud.google.com → new project `traveldeal`.
 2. **Google Auth Platform** (formerly *OAuth consent screen*): app name, your email, audience **External**. Leave the publishing status on **Testing** and add your Gmail (and anyone else you'll invite) as **test users**. Scopes: `openid`, `email`, `profile`.
