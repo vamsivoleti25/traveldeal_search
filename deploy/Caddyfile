@@ -1,0 +1,15 @@
+# DOMAIN comes from deploy/.env, e.g. traveldeal.example.com or 129-146-1-2.sslip.io
+{$DOMAIN} {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		-Server
+	}
+
+	# Streamlit needs WebSockets; Caddy proxies them automatically.
+	reverse_proxy app:8501
+}

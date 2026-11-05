@@ -26,7 +26,7 @@ What CardBear's [terms](https://www.cardbear.com/terms) say, in short:
 
 How this project respects that:
 
-- The gift card page is an original design. It does not copy CardBear's layout or styling.
+- The gift card page is an original design built from standard Streamlit components. It does not copy CardBear's layout or styling.
 - Every discount is labeled as a dated snapshot with attribution and a link to the live page.
 - The weekly refresh is **off by default**, fetches one page every 2.5 seconds, travel brands only, and opens a pull request instead of publishing directly.
 
@@ -38,4 +38,4 @@ A public GitHub Pages site is not strictly "personal" use. Email CardBear (https
 2. **Actions → Refresh gift card discounts → Run workflow** to test it.
 3. Review the pull request. Large moves (10+ points) are called out in its description.
 
-The page parser (`scripts/giftcard-parse.ts`) was written without access to CardBear's raw HTML, so the first run may not find discounts. If every brand fails, the workflow stops with an error and nothing changes; adjust the labels the parser looks for and re-run.
+The page parser (`scripts/giftcard_parse.py`) was written without access to CardBear's raw HTML, so the first run may not find discounts. If every brand fails, the workflow stops with an error and nothing changes; adjust the labels the parser looks for and re-run.

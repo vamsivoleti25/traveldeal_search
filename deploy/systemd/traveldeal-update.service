@@ -1,0 +1,9 @@
+[Unit]
+Description=TravelDeal Search: deploy the latest passing commit
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=ubuntu
+ExecStart=/bin/bash /opt/traveldeal/deploy/update.sh

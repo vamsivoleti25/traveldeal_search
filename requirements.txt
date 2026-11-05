@@ -1,0 +1,5 @@
+# Runtime dependencies (what the server installs)
+streamlit[auth]>=1.66,<2
+SQLAlchemy>=2.0,<3
+oracledb>=2.4
+oci>=2.130

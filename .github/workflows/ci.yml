@@ -6,18 +6,24 @@ on:
     branches: [main]
 
 jobs:
-  check:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-python@v5
         with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - run: pip install -r requirements-dev.txt
       - name: Validate card data
-        run: npm run validate
-      - name: Unit tests
-        run: npm test
-      - name: Type-check and build
-        run: npm run build
+        run: python scripts/validate_data.py
+      - name: Tests (engine, database, backups, app smoke tests)
+        run: pytest -q
+
+  docker:
+    # Proves the image builds for the Arm VM before the VM tries to deploy it.
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t traveldeal:ci .

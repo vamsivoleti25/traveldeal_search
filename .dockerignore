@@ -1,0 +1,14 @@
+.git
+.github
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+local.db
+*.db
+.env
+deploy/.env
+.streamlit/secrets.toml
+tests
+docs
+backups

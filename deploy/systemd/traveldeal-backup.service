@@ -1,0 +1,10 @@
+[Unit]
+Description=TravelDeal Search: back up user data to Object Storage
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=ubuntu
+WorkingDirectory=/opt/traveldeal
+ExecStart=/usr/bin/docker compose run --rm --no-deps app python -m traveldeal.backup

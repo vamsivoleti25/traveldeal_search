@@ -1,0 +1,10 @@
+[Unit]
+Description=Nightly TravelDeal Search backup (also keeps the Always Free database active)
+
+[Timer]
+OnCalendar=*-*-* 07:17:00 UTC
+RandomizedDelaySec=10min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

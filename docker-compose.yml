@@ -1,0 +1,40 @@
+# Production stack on the OCI Always Free VM.
+#   caddy: HTTPS (free Let's Encrypt certificate) and reverse proxy
+#   app:   the Streamlit app; reaches Autonomous Database over TLS
+# Secrets live on the VM only: deploy/.env and .streamlit/secrets.toml (chmod 600).
+services:
+  app:
+    build: .
+    image: traveldeal:latest
+    restart: unless-stopped
+    env_file: deploy/.env
+    environment:
+      APP_ENV: production
+    volumes:
+      - ./.streamlit/secrets.toml:/app/.streamlit/secrets.toml:ro
+    expose:
+      - "8501"
+    mem_limit: 2g
+    logging:
+      driver: json-file
+      options: { max-size: "10m", max-file: "3" }
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    depends_on: [app]
+    ports:
+      - "80:80"
+      - "443:443"
+    env_file: deploy/.env
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    logging:
+      driver: json-file
+      options: { max-size: "10m", max-file: "3" }
+
+volumes:
+  caddy_data:
+  caddy_config:

@@ -1,0 +1,37 @@
+name: Uptime check
+
+# Hourly health check of the live site. Opens an issue if it is down.
+# Set the repository variable SITE_URL (e.g. https://traveldeal.example.com) to enable.
+# Note: GitHub pauses scheduled workflows after 60 days with no repository activity.
+
+on:
+  schedule:
+    - cron: "41 * * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  ping:
+    if: ${{ vars.SITE_URL != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check /_stcore/health
+        id: check
+        run: |
+          for i in 1 2 3; do
+            if curl -fsS --max-time 20 "${{ vars.SITE_URL }}/_stcore/health"; then echo "up=true" >> "$GITHUB_OUTPUT"; exit 0; fi
+            sleep 30
+          done
+          echo "up=false" >> "$GITHUB_OUTPUT"
+      - name: Open an issue when down
+        if: steps.check.outputs.up == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh label create outage --color D73A4A 2>/dev/null || true
+          if [ -z "$(gh issue list --label outage --state open --json number --jq '.[0].number')" ]; then
+            gh issue create --title "Site is down" --label outage --body "Health check failed at $(date -u). See docs/RUNBOOK.md."
+          fi

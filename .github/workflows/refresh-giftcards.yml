@@ -1,15 +1,12 @@
 name: Refresh gift card discounts
 
-# Weekly refresh of data/giftcards.json. Opens a pull request so you can review the
-# changes before they reach the live site.
-#
-# OFF BY DEFAULT. To enable: Settings → Secrets and variables → Actions → Variables →
-# New repository variable GIFTCARD_SOURCE = cardbear. Read the note at the top of
-# scripts/refresh-giftcards.ts first.
+# Weekly refresh of data/giftcards.json, delivered as a pull request for you to review.
+# OFF BY DEFAULT: add the repository variable GIFTCARD_SOURCE=cardbear to enable,
+# after reading docs/DATA_SOURCES.md.
 
 on:
   schedule:
-    - cron: '17 13 * * 1' # Mondays 13:17 UTC
+    - cron: "17 13 * * 1"
   workflow_dispatch:
 
 permissions:
@@ -22,24 +19,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-python@v5
         with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
+          python-version: "3.12"
+      - run: pip install -r requirements-dev.txt
       - name: Refresh snapshot
         env:
           GIFTCARD_SOURCE: ${{ vars.GIFTCARD_SOURCE }}
-        run: npm run refresh:giftcards
-      - name: Check the app still builds
-        run: npm test && npm run build
-      - name: Open pull request
-        uses: peter-evans/create-pull-request@v6
+        run: python scripts/refresh_giftcards.py
+      - run: pytest -q
+      - uses: peter-evans/create-pull-request@v6
         with:
           branch: bot/giftcard-refresh
           delete-branch: true
           add-paths: data/giftcards.json
-          commit-message: 'Refresh gift card discount snapshot'
-          title: 'Refresh gift card discounts'
+          commit-message: Refresh gift card discount snapshot
+          title: Refresh gift card discounts
           body-path: .giftcard-refresh-summary.md
           labels: data
